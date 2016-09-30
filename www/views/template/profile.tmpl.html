@@ -1,0 +1,28 @@
+<div layout="row" layout-align="end center">
+  <span class="user-name">{{options.user.name}}</span>
+  <md-button class="md-fab md-mini md-primary md-hue-2" ng-click="options.show =! options.show" aria-label="Mini FAB">
+    <md-icon class="material-icons md-toggle-icon profile-icon" aria-hidden="true">person</md-icon>
+  </md-button>
+  <div ng-show="options.show" class="marg-r-20 user-menu">
+    <div class="padd-10" >
+      <md-button class="md-fab md-mini md-primary md-hue-2" ng-click="options.show =! options.show" aria-label="Mini FAB">
+        <md-icon class="material-icons md-toggle-icon" aria-hidden="true">person</md-icon>
+      </md-button>
+      <span class="bold" title="{{options.user.name}}">{{name()}}</span>
+      <a href="{{options.edit.href}}" ng-show="options.edit"><i class="material-icons pull-right marg-t-15" style="font-size:18px">edit</i></a>
+    </div>
+    <md-divider ng-show="options.user.details"></md-divider>
+    <ul class="no-padd no-marg" ng-show="options.user.details">
+      <div class="menuItem padd-15">
+        <div class="marg-b-15" flex ng-repeat="item in options.user.details">
+          <label class="txt-12 txt-light-gray" >{{item.label|translate}}</label>
+          <span class="txt-14 pull-right">{{item.value|translate}}</span>
+        </div>
+      </div>
+      <md-divider></md-divider>
+      <div class="menuItem padd-15">
+        <button class="button-bg sair" ng-click="options.logout()">{{'profile.logout'|translate}}</button>
+      </div>
+    </ul>
+  </div>
+</div>

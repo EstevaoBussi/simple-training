@@ -1,0 +1,12 @@
+{
+  "menu" : {
+    "treinos" : "Treinos",
+    "academia" : "Academia",
+    "casa" : "Casa"
+  },
+  "profile" : {
+    "telefone": "Telefone",
+    "email": "E-mail",
+    "logout" : "Sair"
+  }
+}

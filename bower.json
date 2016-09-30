@@ -1,0 +1,24 @@
+{
+  "name": "simle-training",
+  "version": "0.0.1",
+  "main": "www/js/app.module.js",
+  "keywords": ["AngularJS","Directive"],
+  "authors": ["Estevao Henrique Bussi <estevao.bussi@gmail.com>"],
+  "license": "MIT",
+  "ignore": ["**/.*",".gitignore","node_modules","bower_components","test","tests","Gruntfile.js","src"],
+  "dependencies": {
+    "angular": "~1.5.7",
+    "angular-material": "1.1.0-rc.5",
+    "angular-translate": "2.11.0",
+    "angular-translate-loader-static-files": "2.11.0",
+    "angular-sanitize": "1.5.7",
+    "angular-i18n": "1.5.7",
+    "moment": "2.10.6",
+    "angular-ui-router": "~0.2.13",
+    "angular-material-icons": "~v0.6.0"
+  },
+  "devDependencies": {},
+  "resolutions": {
+    "angular": "1.5.7"
+  }
+}

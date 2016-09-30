@@ -1,0 +1,39 @@
+<md-sidenav class="md-sidenav-left"
+            md-component-id="left"
+            md-is-locked-open="$mdMedia('gt-md')"
+            md-whiteframe="1">
+  <md-content role="navigation" style="height: 100%;" flex>
+    <md-toolbar class="md-primery padd-t-5" layout-align="center center">
+        <h4><a href="{{options.logo.href}}" style="color: #FFFFFF; font-size: 22px; font-family: 'Signika', sans-serif;">Burn Fat - Fitness</a></h4>
+    </md-toolbar>
+    <ul class="side-menu">
+      <li class="parent-list-item" ng-repeat="item in items">
+        <md-button class="md-button-toggle" ng-click="selectMenuId(item)" ng-if="item.type == 'link'" ui-sref="{{item.state}}" aria-controls="docs-menu-{{item.name | nospace}}" layout="row">
+          {{item.name|translate}}
+        </md-button>
+        <md-button class="md-button-toggle" ng-click="selectMenuId(item)" ng-if="item.type == 'toggle'" aria-controls="docs-menu-{{item.name | nospace}}" layout="row">
+          {{item.name|translate}}
+        </md-button>
+        <ul class="md-button-toggle menu-toggle-list nivel-2" id="docs-menu-{{item.name | nospace}}" ng-show="item == menuIdSelected">
+          <li ng-show="page" ng-repeat="page in item.pages">
+            <md-button ng-click="selectItem(page)" ng-class="{'selected' : page === selected }" ui-sref="{{page.state}}">
+              {{page.name|translate}}
+            </md-button>
+          </li>
+          <li ng-repeat="subitem in item.subitems" ng-click="selectMenuIdSub(subitem)">
+            <md-button layout="row" aria-expanded="">
+              {{subitem.name|translate}}
+            </md-button>
+            <ul class="nivel-3" ng-show="subitem == menuIdSelectedSub">
+              <li ng-click="selectItem(sub)" ng-repeat="sub in subitem.pages" ng-class="{'selected' : sub === selected }">
+                <md-button ui-sref="{{sub.state}}">
+                  {{sub.name|translate}}
+                </md-button>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </md-content>
+</md-sidenav>
