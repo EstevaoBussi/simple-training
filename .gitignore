@@ -4,3 +4,11 @@
 /frontend/.idea
 /frontend/node_modules
 /frontend/www/bower_components
+/simple-training-domain/.settings
+/simple-training-domain/bin
+/simple-training-domain/target
+/simple-training-frontend/.idea
+/simple-training-frontend/node_modules
+/simple-training-frontend/www/bower_components
+/simple-training-domain/.classpath
+/simple-training-domain/.project
