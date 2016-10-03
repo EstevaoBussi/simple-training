@@ -12,3 +12,8 @@
 /simple-training-frontend/www/bower_components
 /simple-training-domain/.classpath
 /simple-training-domain/.project
+/simple-training-web/bin
+/simple-training-web/.settings
+/simple-training-web/.project
+/simple-training-web/.classpath
+/simple-training-web/.gitignore
