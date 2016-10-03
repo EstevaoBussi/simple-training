@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>simple-training-domain</groupId>
-  <artifactId>simple-training-domain</artifactId>
+  <groupId>com.simple.training</groupId>
+  <artifactId>domain</artifactId>
   <version>0.0.1</version>
   <build>
     <plugins>
@@ -76,7 +76,6 @@
 	        <groupId>org.springframework</groupId>
 	        <artifactId>spring-beans</artifactId>
 	        <version>4.2.5.RELEASE</version>
-	        <scope>test</scope>
 	    </dependency>
 
     	<dependency>
