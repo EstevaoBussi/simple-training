@@ -24,6 +24,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ComponentScan({ "com.simple.training.web.api.treino",
 	"com.simple.training.web.api.usuario",
 	"com.simple.training.domain.treino.service",
+	"com.simple.training.domain.treino.exercicio.service",
 	"com.simple.training.domain.usuario.service"})
 public class WebHibernateConfiguration {
     

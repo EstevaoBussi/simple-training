@@ -11,8 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Proxy;
+
 @Entity
 @Table(name = "EXERCICIO")
+@Proxy(lazy=false)
 public class Exercicio implements Serializable {
 
 	private static final long serialVersionUID = 1L;

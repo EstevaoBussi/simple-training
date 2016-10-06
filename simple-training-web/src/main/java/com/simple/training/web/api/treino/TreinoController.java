@@ -32,7 +32,7 @@ public class TreinoController {
 	private UsuarioService usuarioService;
 	
 	@RequestMapping(method = RequestMethod.GET)
-    public List<Treino> getTreinos(@RequestParam(value="dataTreino") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate data, 
+    public List<Treino> getAll(@RequestParam(value="dataTreino") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate data, 
     		                       @QueryParam(value="local") String local, 
     		                       @QueryParam(value="usuario") String usuario) throws Exception {
 		if (data == null) {
@@ -49,13 +49,13 @@ public class TreinoController {
 	
 	@Transactional
     @RequestMapping(method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public Treino updateCestaBeneficio(@RequestBody final Treino treino) throws Exception {
+    public Treino update(@RequestBody final Treino treino) throws Exception {
         return treinoService.save(treino);
     }
 
     @Transactional
     @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Treino createCestaBeneficio(@RequestBody final Treino treino) throws Exception {
+    public Treino create(@RequestBody final Treino treino) throws Exception {
     	return treinoService.save(treino);
     }
     
