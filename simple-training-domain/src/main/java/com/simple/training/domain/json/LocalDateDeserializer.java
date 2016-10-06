@@ -10,15 +10,15 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 
-public class LocalDateDeserealizer extends StdDeserializer<LocalDate>{
+public class LocalDateDeserializer extends StdDeserializer<LocalDate>{
 
 	private static final long serialVersionUID = 1L;
 
-	public LocalDateDeserealizer() {
+	public LocalDateDeserializer() {
         this(null);
     }
    
-    public LocalDateDeserealizer(Class<LocalDate> t) {
+    public LocalDateDeserializer(Class<LocalDate> t) {
         super(t);
     }
 
@@ -26,8 +26,8 @@ public class LocalDateDeserealizer extends StdDeserializer<LocalDate>{
 	public LocalDate deserialize(JsonParser jp, DeserializationContext arg1)
 			throws IOException, JsonProcessingException {
 		JsonNode node = jp.getCodec().readTree(jp);
-		if (node.hasNonNull(0)) {
-			return LocalDate.parse(node.get(0).asText(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		if (node != null) {
+			return LocalDate.parse(node.asText(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 		}
         return null;
 	}

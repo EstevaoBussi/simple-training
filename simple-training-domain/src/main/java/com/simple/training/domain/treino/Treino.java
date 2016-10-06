@@ -21,9 +21,11 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+import com.simple.training.domain.json.LocalDateDeserializer;
+import com.simple.training.domain.json.LocalDateSerializer;
 import com.simple.training.domain.usuario.Usuario;
+import com.simple.training.domain.usuario.json.UsuarioDeserializer;
+import com.simple.training.domain.usuario.json.UsuarioSerializer;
 
 @Entity
 @Table(name = "TREINO")
@@ -46,6 +48,8 @@ public class Treino implements Serializable	{
 	private LocalDate data;
 	@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="USUARIO")
+	@JsonDeserialize(using = UsuarioDeserializer.class)  
+    @JsonSerialize(using = UsuarioSerializer.class) 
 	private Usuario usuario;
 	
 	public Long getID() {

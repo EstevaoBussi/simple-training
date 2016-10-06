@@ -1,28 +1,26 @@
 package com.simple.training.web.config;
 
+import java.util.List;
+
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.context.annotation.Primary;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurerAdapter;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.hibernate4.Hibernate4Module;
 import com.simple.training.domain.treino.Treino;
 import com.simple.training.domain.treino.exercicio.Exercicio;
 import com.simple.training.domain.usuario.Usuario;
 
 @SpringBootApplication
-@EnableAutoConfiguration
 @Import(value=WebHibernateConfiguration.class)
 @Configuration
-public class WebApplication extends WebMvcConfigurerAdapter {
+public class WebApplication {
 	
 	@Bean
     public RepositoryRestConfigurer repositoryRestConfigurer() {
@@ -34,18 +32,17 @@ public class WebApplication extends WebMvcConfigurerAdapter {
             	config.exposeIdsFor(Exercicio.class);
             	config.exposeIdsFor(Usuario.class);
             }
+            @Override
+        	public void configureHttpMessageConverters(List<HttpMessageConverter<?>> messageConverters) {
+            	messageConverters.add(new MappingJackson2HttpMessageConverter());
+         
+                super.configureHttpMessageConverters(messageConverters);
+            }
         };
+        
     }
 	
-    @Bean
-    @Primary
-    public ObjectMapper objectMapper() {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.registerModule(new Hibernate4Module());
-        return mapper;
-    }
-    
-    public static void main(String[] args) {
+	public static void main(String[] args) {
         SpringApplication.run(WebApplication.class, args);
     }
 }

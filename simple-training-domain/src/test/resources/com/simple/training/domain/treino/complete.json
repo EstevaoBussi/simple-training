@@ -2,11 +2,6 @@
 "id":1,
 "exercicios":[],
 "localTreino":"ACADEMIA",
-"data":[2001,1,1],
-"usuario":{
-"username":null,
-"nome":null,
-"email":null,
-"dataNascimento":null
-}
+"data":"2001-01-01",
+"usuario":null
 }

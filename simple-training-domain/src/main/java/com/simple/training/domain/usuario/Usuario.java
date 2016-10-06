@@ -10,16 +10,14 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Proxy;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+import com.simple.training.domain.json.LocalDateDeserializer;
+import com.simple.training.domain.json.LocalDateSerializer;
 
 @Entity
 @Table(name = "USUARIO")
-@Proxy(lazy = false)
-@JsonIgnoreProperties(ignoreUnknown = true)
+@Proxy(lazy=false)
 public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
