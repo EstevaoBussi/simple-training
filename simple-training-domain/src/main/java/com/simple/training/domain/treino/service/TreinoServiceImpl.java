@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import com.simple.training.domain.treino.ExercicioVariante;
 import com.simple.training.domain.treino.LocalTreino;
 import com.simple.training.domain.treino.Treino;
 import com.simple.training.domain.treino.TreinoRepository;
@@ -27,6 +28,11 @@ public class TreinoServiceImpl implements TreinoService {
 	
 	@Override
 	public Treino save(Treino treino) {
+		if (!treino.getExercicios().isEmpty()) {
+			for (ExercicioVariante exercicio : treino.getExercicios()) {
+				exercicio.setTreino(treino);
+			}
+		}
 		return repository.save(treino);
 	}
 	
