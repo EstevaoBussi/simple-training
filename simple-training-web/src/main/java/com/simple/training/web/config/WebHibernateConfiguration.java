@@ -6,19 +6,15 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
-import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.transaction.support.TransactionTemplate;
 
 @Configuration
 @EnableTransactionManagement
@@ -26,12 +22,11 @@ import org.springframework.transaction.support.TransactionTemplate;
 		"com.simple.training.domain.treino",
 		"com.simple.training.domain.usuario"})
 @ComponentScan({ "com.simple.training.web.api.treino",
-	"com.simple.training.domain.treino.service"})
+	"com.simple.training.web.api.usuario",
+	"com.simple.training.domain.treino.service",
+	"com.simple.training.domain.usuario.service"})
 public class WebHibernateConfiguration {
-
-    @Autowired
-    ApplicationContext applicationContext;
-
+    
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
     	LocalContainerEntityManagerFactoryBean sessionFactory = new LocalContainerEntityManagerFactoryBean();
@@ -64,11 +59,6 @@ public class WebHibernateConfiguration {
         return properties;
     }
     
-    @Bean
-    @Autowired
-    public TransactionTemplate transactionTemplate(PlatformTransactionManager tx) {
-      return new TransactionTemplate(tx);
-    }
 
     @Bean
     @Autowired
@@ -76,12 +66,6 @@ public class WebHibernateConfiguration {
        JpaTransactionManager txManager = new JpaTransactionManager();
        txManager.setEntityManagerFactory(emf);
        return txManager;
-    }
-    
-    @Bean
-    @Autowired
-    public JdbcTemplate jdbcTemplate(DataSource ds) {
-    	return new JdbcTemplate(ds);
     }
 
 }

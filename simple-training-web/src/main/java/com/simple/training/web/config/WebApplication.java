@@ -10,34 +10,38 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.fasterxml.jackson.datatype.hibernate4.Hibernate4Module;
+import com.simple.training.domain.treino.Treino;
+import com.simple.training.domain.treino.exercicio.Exercicio;
+import com.simple.training.domain.usuario.Usuario;
 
 @SpringBootApplication
 @EnableAutoConfiguration
 @Import(value=WebHibernateConfiguration.class)
 @Configuration
-public class WebApplication {
-
-    @Bean
+public class WebApplication extends WebMvcConfigurerAdapter {
+	
+	@Bean
     public RepositoryRestConfigurer repositoryRestConfigurer() {
 
         return new RepositoryRestConfigurerAdapter() {
             @Override
             public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
-            	//config.exposeIdsFor(Localidade.class);
+            	config.exposeIdsFor(Treino.class);
+            	config.exposeIdsFor(Exercicio.class);
+            	config.exposeIdsFor(Usuario.class);
             }
         };
     }
-    
+	
     @Bean
     @Primary
     public ObjectMapper objectMapper() {
         ObjectMapper mapper = new ObjectMapper();
-        mapper.registerModule(new JavaTimeModule());
-        mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+        mapper.registerModule(new Hibernate4Module());
         return mapper;
     }
     
