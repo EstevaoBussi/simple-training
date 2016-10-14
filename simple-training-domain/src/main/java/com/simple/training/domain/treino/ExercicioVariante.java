@@ -13,7 +13,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.simple.training.domain.treino.exercicio.Exercicio;
+import com.simple.training.domain.treino.exercicio.json.ExercicioDeserializer;
+import com.simple.training.domain.treino.exercicio.json.ExercicioSerializer;
 
 @Entity
 @Table(name = "EXERCICIO_VARIANTE")
@@ -31,7 +35,10 @@ public class ExercicioVariante implements Serializable {
 	private String observacao;
 	@Column(name="APARELHO")
 	private String aparelho;
-	@Column(name="EXERCICIO")
+	@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="EXERCICIO", nullable=false)
+	@JsonDeserialize(using = ExercicioDeserializer.class)  
+    @JsonSerialize(using = ExercicioSerializer.class) 
 	private Exercicio exercicio;
 	@Column(name="STATUS")
 	private Status status;
