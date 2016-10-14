@@ -18,7 +18,7 @@ import com.simple.training.domain.treino.exercicio.Exercicio;
 import com.simple.training.domain.usuario.Usuario;
 
 @SpringBootApplication
-@Import(value=WebHibernateConfiguration.class)
+@Import(value=WebHibernateConfig.class)
 @Configuration
 public class WebApplication {
 	

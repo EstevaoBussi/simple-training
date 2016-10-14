@@ -26,7 +26,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 	"com.simple.training.domain.treino.service",
 	"com.simple.training.domain.treino.exercicio.service",
 	"com.simple.training.domain.usuario.service"})
-public class WebHibernateConfiguration {
+public class WebHibernateConfig {
     
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
