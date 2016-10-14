@@ -1,4 +1,4 @@
-package com.simple.training.web.filter;
+package com.simple.training.web.config;
 
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;

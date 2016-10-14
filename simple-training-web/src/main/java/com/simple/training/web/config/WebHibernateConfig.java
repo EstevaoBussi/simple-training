@@ -22,7 +22,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 		"com.simple.training.domain.treino",
 		"com.simple.training.domain.usuario"})
 @ComponentScan({ "com.simple.training.web.api.treino",
-	"com.simple.training.web.config",
 	"com.simple.training.web.api.usuario",
 	"com.simple.training.domain.treino.service",
 	"com.simple.training.domain.treino.exercicio.service",

@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
@@ -22,6 +22,15 @@ import com.simple.training.domain.usuario.Usuario;
 @Import(value=WebHibernateConfig.class)
 @Configuration
 public class WebApplication {
+	
+	@Bean
+    public FilterRegistrationBean myFilter() {
+        FilterRegistrationBean registration = new FilterRegistrationBean();
+        CORSFilter myFilter = new CORSFilter();
+        registration.setFilter(myFilter);
+        registration.addUrlPatterns("/api/*");
+        return registration;
+    }
 	
 	@Bean
     public RepositoryRestConfigurer repositoryRestConfigurer() {
