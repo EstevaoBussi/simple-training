@@ -1,4 +1,5 @@
 (function() {angular.module('config-app', [])
+    .constant('constant', Config())
     .provider('config', function() {
         this.config = {};
         this.config.setFormLocale = function(formLocale) {
@@ -80,4 +81,17 @@
             .primaryPalette('training')
             .accentPalette('training-accent');
     });
-})();
+
+    function Config() {
+
+        var config = {};
+        config.apiBaseURL = 'http://localhost:8190/api/v1/';
+        config.logoutPath = 'http://google.com.br/';
+
+        config.header = function (token){
+            return {headers: {"Google-Token": token}};
+        }
+        return config;
+    }
+})
+();

@@ -13,6 +13,10 @@
       'profile-component',
       'treino-module',
       'treino-module-service',
+      'login-module',
+      'session-service-module',
+      'dialog-service',
+      'transaction-service',
       'config-app',
       'ngMessages'
     ]).config(function($translateProvider, configProvider) {
@@ -27,9 +31,18 @@
     }).config(['$stateProvider', '$urlRouterProvider', '$logProvider',
       function($stateProvider, $urlRouterProvider) {
 
-        $urlRouterProvider.otherwise("/");
+        $urlRouterProvider.otherwise("/login");
 
         $stateProvider
+          .state('login', {
+              url: '/login',
+              views: {
+                  '@': {
+                      templateUrl: 'views/template/template.tmpl.html',
+                      controller: 'LoginController'
+                  }
+              }
+          })
           .state('home', { // Header e sidebar
             url: '/',
             views: {

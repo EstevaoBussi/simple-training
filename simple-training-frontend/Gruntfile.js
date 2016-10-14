@@ -6,8 +6,8 @@ module.exports = function (grunt) {
 	'dev': {
 	  root: 'www',
 	  openBrowser : true,
-	  port: 8383,
-	  host: "0.0.0.0",
+	  port: 8282,
+	  host: "localhost",
 	  runInBackground: false,
 	}
   }});

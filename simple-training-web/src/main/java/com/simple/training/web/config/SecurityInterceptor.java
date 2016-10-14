@@ -32,7 +32,7 @@ import com.simple.training.web.api.exception.AuthenticationException;
 @Component
 public class SecurityInterceptor extends HandlerInterceptorAdapter {
     
-    public static final String TOKEN_HEADER = "Google-Token";
+    public static final String TOKEN_HEADER = "google-token";
 
     /**
      * Client ID (ou ID do Cliente) da aplicação registrada no Google Developer

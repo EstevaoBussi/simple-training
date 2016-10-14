@@ -2,7 +2,7 @@ application:
     simple-training:
         access-key: "AIzaSyBddGILQm5KY5hrQ-80vXi2xl8Jam-xgBc"
         base-url: "http://localhost:8190"
-        client-id: " 321116716041-229h0d82evq6mk7o3q2lj4i9ogji2adq.apps.googleusercontent.com"
+        client-id: "321116716041-229h0d82evq6mk7o3q2lj4i9ogji2adq.apps.googleusercontent.com"
 
 spring:
     datasource:
