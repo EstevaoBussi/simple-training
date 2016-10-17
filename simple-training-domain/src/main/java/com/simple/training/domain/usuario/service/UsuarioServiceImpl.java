@@ -12,6 +12,11 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Autowired
     private UsuarioRepository repository;
 
+    @Override
+	public Usuario findByEmail(String email) {
+		return repository.findByEmail(email);
+	}
+    
 	@Override
 	public Usuario getUsuario(String username) {
 		return repository.getOne(username);

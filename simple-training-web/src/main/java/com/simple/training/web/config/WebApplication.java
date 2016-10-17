@@ -24,10 +24,10 @@ import com.simple.training.domain.usuario.Usuario;
 public class WebApplication {
 	
 	@Bean
-    public FilterRegistrationBean myFilter() {
+    public FilterRegistrationBean corsFilter() {
         FilterRegistrationBean registration = new FilterRegistrationBean();
-        CORSFilter myFilter = new CORSFilter();
-        registration.setFilter(myFilter);
+        CORSFilter corsFilter = new CORSFilter();
+        registration.setFilter(corsFilter);
         registration.addUrlPatterns("/api/*");
         return registration;
     }

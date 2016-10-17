@@ -34,10 +34,6 @@ public class SecurityInterceptor extends HandlerInterceptorAdapter {
     
     public static final String TOKEN_HEADER = "google-token";
 
-    /**
-     * Client ID (ou ID do Cliente) da aplicação registrada no Google Developer
-     * Console. Acessar https://console.developers.google.com/apis/credentials.
-     */
     @Value("${application.simple-training.client-id}")
     private String CLIENT_ID;
 
@@ -59,16 +55,6 @@ public class SecurityInterceptor extends HandlerInterceptorAdapter {
         return true;
     }
 
-    /**
-     * Realiza a autenticação do usuário através de sua conta
-     * no Google, utilizando o token recebido em um header
-     * 
-     * @param googleToken
-     * @throws IOException
-     * @throws JSONException256805
-     * @throws AuthenticationException
-     * @throws GeneralSecurityException 
-     */
     private void authenticate(String googleToken) throws GeneralSecurityException, IOException, AuthenticationException {
 
         GoogleIdToken idToken = verifyForIssuer("accounts.google.com", googleToken);
