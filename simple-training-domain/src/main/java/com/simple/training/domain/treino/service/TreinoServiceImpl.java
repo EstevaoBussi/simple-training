@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +25,7 @@ public class TreinoServiceImpl implements TreinoService {
 	@Override
 	public List<Treino> getTreinos(LocalDate data, LocalTreino local, Usuario usuario) {
 		Specification<Treino> spec = TreinoSpecifications.withFilters(data, local, usuario);
-		return repository.findAll(spec);
+		return repository.findAll(spec, new Sort(Direction.ASC,"data"));
 	}
 	
 	@Override

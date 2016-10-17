@@ -12,6 +12,14 @@ angular.module('treino-module', [])
         TreinoService.getTreinos($scope.dataTreino, $scope.tipo).then(function (response) {
             if (response.status == 200 && response.data && response.data.length > 0) {
                 $scope.treinos = response.data;
+                $scope.selected = 0;
+                angular.forEach($scope.treinos, function(treino, key) {
+                    if (treino.data == moment().format('YYYY-MM-DD')) {
+                        $scope.selected = key;
+                        return;
+                    }
+                });
+
             } else {
                 delete $scope.treinos;
             }
