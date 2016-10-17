@@ -86,7 +86,7 @@
 
         var config = {};
         config.apiBaseURL = 'http://localhost:8190/api/v1/';
-        config.logoutPath = 'http://google.com.br/';
+        config.logoutPath = 'http://localhost:8282/';
 
         config.header = function (token){
             return {headers: {"Google-Token": token}};

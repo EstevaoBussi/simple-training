@@ -8,10 +8,14 @@ angular.module('treino-module', [])
     };
     $scope.dataTreino = new Date();
 
-    $scope.treinos = TreinoService.getTreinos($scope.dataTreino, $scope.tipo);
-
     $scope.$watch('dataTreino', function(newValue, oldValue) {
-        $scope.treinos = TreinoService.getTreinos($scope.dataTreino, $scope.tipo);
+        TreinoService.getTreinos($scope.dataTreino, $scope.tipo).then(function (response) {
+            if (response.status == 200 && response.data && response.data.length > 0) {
+                $scope.treinos = response.data;
+            } else {
+                delete $scope.treinos;
+            }
+        });
     });
 
 }]);

@@ -43,7 +43,7 @@ public class Exercicio implements Serializable {
 	@Embedded
 	@AttributeOverrides({
 	    @AttributeOverride(name="type", column=@Column(name="TYPE_IMG")),
-	    @AttributeOverride(name="src", column=@Column(name="SRC_IMG"))
+	    @AttributeOverride(name="src", column=@Column(name="SRC_IMG", columnDefinition = "BINARY(100000)"))
 	})
 	@JsonDeserialize(using = Base64Deserializer.class)  
     @JsonSerialize(using = Base64Serializer.class) 

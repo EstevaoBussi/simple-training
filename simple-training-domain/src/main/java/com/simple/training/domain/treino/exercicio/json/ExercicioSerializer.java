@@ -1,6 +1,7 @@
 package com.simple.training.domain.treino.exercicio.json;
 
 import java.io.IOException;
+import java.util.Base64;
 
 import org.springframework.util.StringUtils;
 
@@ -36,6 +37,13 @@ public class ExercicioSerializer extends StdSerializer<Exercicio>{
 			}
 			if (exercicio.getGrupoMuscular() != null) {
 				json.writeStringField("grupoMuscular", exercicio.getGrupoMuscular().name());
+			}
+			if (exercicio.getImage() != null && exercicio.getImage().getType() != null 
+					&& exercicio.getImage().getSrc() != null) {
+				json.writeObjectFieldStart("image");
+				json.writeStringField("type", exercicio.getImage().getType());
+				json.writeStringField("src", Base64.getEncoder().encodeToString(exercicio.getImage().getSrc()));
+				json.writeEndObject();
 			}
 			json.writeEndObject();
 		}

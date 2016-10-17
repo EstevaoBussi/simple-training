@@ -23,7 +23,9 @@ public class TreinoSpecifications {
             predicates.add(predicate);
 
             predicate = cb.equal(root.get("localTreino"), local);
+            predicates.add(predicate);
             predicate = cb.equal(root.get("usuario"), usuario);
+            predicates.add(predicate);
             
             return cb.and(predicates.toArray(new Predicate[0]));
         };
