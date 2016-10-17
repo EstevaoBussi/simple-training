@@ -17,6 +17,7 @@
       'session-service-module',
       'dialog-service',
       'transaction-service',
+      'toast-service',
       'config-app',
       'ngMessages'
     ]).config(function($translateProvider, configProvider) {

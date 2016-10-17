@@ -13,9 +13,10 @@ function SessionService() {
     }
   };
 
-  var clear = function () {
+  var logout = function () {
     window.localStorage.removeItem('token');
     window.localStorage.removeItem('user');
+    signOut();
   };
 
   var isAuthenticated = function () {
@@ -39,7 +40,7 @@ function SessionService() {
   return {
     getToken: getToken,
     setToken: setToken,
-    clear: clear,
+    logout: logout,
     isAuthenticated: isAuthenticated,
     getUser: getUser,
     setUser: setUser

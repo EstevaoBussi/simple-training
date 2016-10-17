@@ -1,6 +1,6 @@
 angular.module('login-module',[])
-    .controller('LoginController', ['$scope','$timeout', '$http', 'SessionService', 'constant', '$location', '$state', 'transactionExecutor',
-        function($scope, $timeout, $http, SessionService, constant, $location,  $state, transactionExecutor) {
+    .controller('LoginController', ['$scope','$timeout', '$http', 'SessionService', 'constant', '$location', '$state', 'transactionExecutor', 'toast',
+        function($scope, $timeout, $http, SessionService, constant, $location,  $state, transactionExecutor, toast) {
             $scope.cred = {};
 
             var getUsuario = function(token) {
@@ -11,8 +11,8 @@ angular.module('login-module',[])
 
             $scope.error = function() {
                 delete $scope.user;
-                SessionService.removeToken();
-                $state.go('login', {});
+                SessionService.logout();
+                toast.alert({message:'login.error'});
             }
 
             $scope.signIn = function (googleUser) {
@@ -23,7 +23,7 @@ angular.module('login-module',[])
                 try {
                     SessionService.setToken(token);
                     getUsuario(token).then(function (response) {
-                        if (response.status == 200) {
+                        if (response.status == 200 && response.data) {
                             SessionService.setUser(response.data);
                             $state.go('home', {});
                         } else {

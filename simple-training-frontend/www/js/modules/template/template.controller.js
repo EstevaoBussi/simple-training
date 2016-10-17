@@ -1,15 +1,36 @@
 angular.module('template-module', [])
-.controller('TemplateController', ['$scope', '$mdSidenav',
-                          function ($scope, $mdSidenav) {
+.controller('TemplateController', ['$scope', '$mdSidenav', 'SessionService', '$state',
+                          function ($scope, $mdSidenav, SessionService, $state) {
 
     $scope.sidemenu = {};
     $scope.header = {};
     $scope.items2 = [];
+    $scope.user = SessionService.getUser();
 
     $scope.sidemenu.items = $scope.items2;
-    $scope.sidemenu.options = {id:'sidemenu',logo:{src: 'bower_components/mtr-material/dist/imgs/mtr-logo.png',href:'#/'}};
-    $scope.header.profile = {user:{name:'Estevão Henrique Bussi',details:[{label:'Data Criação',value:'01/01/2016'},{label:'profile.email',value:'estevo@gmail.com'},{label:'profile.telefone',value:'(11)99999-9999'}]},logout:function(){alert('deslogado');},edit:{href:'http://www.google.com.br'}};
-    $scope.header.options = {logo:{src: 'bower_components/mtr-material/dist/imgs/mtr-logo.png',href:'#/'},system:{name:'Showcase',environment:'HOMOLOGAÇÃO'}};
+    $scope.sidemenu.options = {id:'sidemenu'};
+
+    $scope.logout = function () {
+        SessionService.logout();
+        $state.go('home', {});
+    }
+
+    $scope.header.profile = {
+        user:{
+            name:$scope.user.nome,
+            details:[{
+                    label:'profile.dataNascimento',
+                    value:moment($scope.user.dataNascimento).format('DD/MM/YY')
+                },{
+                    label:'profile.email',
+                    value:$scope.user.email
+                }]
+        },
+        logout:$scope.logout,
+        edit:{
+            href:'http://www.google.com.br'
+        }
+    };
 
     $scope.toggleOpen = function() {
         $mdSidenav('left').toggle();

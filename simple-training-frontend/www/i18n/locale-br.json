@@ -6,7 +6,11 @@
   },
   "profile" : {
     "telefone": "Telefone",
-    "email": "E-mail",
+    "email": "E-mail:",
+    "dataNascimento": "Data Nascimento:",
     "logout" : "Sair"
+  },
+  "login": {
+    "error": "Erro ao tentar efetuar a autenticação do usuário"
   }
 }
