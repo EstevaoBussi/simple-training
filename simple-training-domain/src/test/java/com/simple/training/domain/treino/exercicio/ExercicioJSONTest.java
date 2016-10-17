@@ -5,6 +5,7 @@ import java.net.URISyntaxException;
 
 import org.junit.Test;
 
+import com.simple.training.domain.common.base64.Base64;
 import com.simple.training.domain.json.support.AbstractJSONTestSupport;
 
 public class ExercicioJSONTest extends AbstractJSONTestSupport {
@@ -16,6 +17,7 @@ public class ExercicioJSONTest extends AbstractJSONTestSupport {
         exercicio.setNome("NOME");
         exercicio.setGrupoMuscular(GrupoMuscular.ABDOMINAIS);
         exercicio.setDescricao("DESCRICAO");
+        exercicio.setImage(new Base64());
         compareJson("complete.json", exercicio);
     }
 

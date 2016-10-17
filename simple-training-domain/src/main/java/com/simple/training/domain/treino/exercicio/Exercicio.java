@@ -2,7 +2,10 @@ package com.simple.training.domain.treino.exercicio;
 
 import java.io.Serializable;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -12,6 +15,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Proxy;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.simple.training.domain.common.base64.Base64;
+import com.simple.training.domain.common.base64.Base64Deserializer;
+import com.simple.training.domain.common.base64.Base64Serializer;
 
 @Entity
 @Table(name = "EXERCICIO")
@@ -31,8 +40,14 @@ public class Exercicio implements Serializable {
 	@Column(name = "GRUPO_MUSCULAR")
 	@Enumerated(EnumType.STRING)
 	private GrupoMuscular grupoMuscular;
-	
-	//private DataSource image;
+	@Embedded
+	@AttributeOverrides({
+	    @AttributeOverride(name="type", column=@Column(name="TYPE_IMG")),
+	    @AttributeOverride(name="src", column=@Column(name="SRC_IMG"))
+	})
+	@JsonDeserialize(using = Base64Deserializer.class)  
+    @JsonSerialize(using = Base64Serializer.class) 
+	private Base64 image;
 	
 	public Long getID() {
 		return id;
@@ -66,13 +81,13 @@ public class Exercicio implements Serializable {
 		this.grupoMuscular = grupoMuscular;
 	}
 	
-//	public DataSource getImage() {
-//		return image;
-//	}
-//	
-//	public void setImage(DataSource image) {
-//		this.image = image;
-//	}
+	public Base64 getImage() {
+		return image;
+	}
+
+	public void setImage(Base64 image) {
+		this.image = image;
+	}
 
 	@Override
 	public int hashCode() {
@@ -81,7 +96,7 @@ public class Exercicio implements Serializable {
 		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
 		result = prime * result + ((grupoMuscular == null) ? 0 : grupoMuscular.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		//result = prime * result + ((image == null) ? 0 : image.hashCode());
+		result = prime * result + ((image == null) ? 0 : image.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		return result;
 	}
@@ -105,11 +120,11 @@ public class Exercicio implements Serializable {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-//		if (image == null) {
-//			if (other.image != null)
-//				return false;
-//		} else if (!image.equals(other.image))
-//			return false;
+		if (image == null) {
+			if (other.image != null)
+				return false;
+		} else if (!image.equals(other.image))
+			return false;
 		if (nome == null) {
 			if (other.nome != null)
 				return false;
