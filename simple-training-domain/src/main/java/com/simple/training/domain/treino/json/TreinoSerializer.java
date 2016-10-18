@@ -1,4 +1,4 @@
-package com.simple.training.domain.usuario.json;
+package com.simple.training.domain.treino.json;
 
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
@@ -10,15 +10,15 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import com.simple.training.domain.usuario.Usuario;
 
-public class UsuarioSerializer extends StdSerializer<Usuario>{
+public class TreinoSerializer extends StdSerializer<Usuario>{
 
 	private static final long serialVersionUID = 1L;
 
-	public UsuarioSerializer() {
+	public TreinoSerializer() {
         this(null);
     }
    
-    public UsuarioSerializer(Class<Usuario> t) {
+    public TreinoSerializer(Class<Usuario> t) {
         super(t);
     }
 

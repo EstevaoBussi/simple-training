@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.simple.training.domain.treino.LocalTreino;
+import com.simple.training.domain.treino.Categoria;
 import com.simple.training.domain.treino.Treino;
 import com.simple.training.domain.treino.service.TreinoService;
 import com.simple.training.domain.usuario.service.UsuarioService;
@@ -33,18 +33,18 @@ public class TreinoController {
 	
 	@RequestMapping(method = RequestMethod.GET)
     public List<Treino> getAll(@RequestParam(value="dataTreino") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate data, 
-    		                       @QueryParam(value="local") String local, 
+    		                       @QueryParam(value="categoria") String categoria, 
     		                       @QueryParam(value="usuario") String usuario) throws Exception {
 		if (data == null) {
     		throw new CampoObrigatorioException("dataTreino");
 		}
-		if (local == null) {
-    		throw new CampoObrigatorioException("local");
+		if (categoria == null) {
+    		throw new CampoObrigatorioException("categoria");
 		}
 		if (StringUtils.isBlank(usuario)) {
     		throw new CampoObrigatorioException("usuario");
 		}
-        return treinoService.getTreinos(data, LocalTreino.valueOf(local), usuarioService.getUsuario(usuario));
+        return treinoService.getTreinos(data, Categoria.valueOf(categoria), usuarioService.getUsuario(usuario));
     }
 	
 	@Transactional

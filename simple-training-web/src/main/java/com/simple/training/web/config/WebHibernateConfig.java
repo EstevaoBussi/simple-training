@@ -20,10 +20,12 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages={"com.simple.training.domain.treino.exercicio",
 		"com.simple.training.domain.treino",
+		"com.simple.training.domain.treino.realizado",
 		"com.simple.training.domain.usuario"})
 @ComponentScan({ "com.simple.training.web.api.treino",
 	"com.simple.training.web.api.usuario",
 	"com.simple.training.domain.treino.service",
+	"com.simple.training.domain.treino.realizado.service",
 	"com.simple.training.domain.treino.exercicio.service",
 	"com.simple.training.domain.usuario.service"})
 public class WebHibernateConfig {
@@ -32,11 +34,7 @@ public class WebHibernateConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
     	LocalContainerEntityManagerFactoryBean sessionFactory = new LocalContainerEntityManagerFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan(new String[] { "com.simple.training.domain.treino.exercicio",
-        		"com.simple.training.domain.treino",
-        		"com.simple.training.domain.treino.service",
-                "com.simple.training.domain.usuario",
-                "com.simple.training.domain.usuario.service" });
+        sessionFactory.setPackagesToScan(new String[] { "com.simple.training.domain"});
         sessionFactory.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         sessionFactory.setJpaProperties(hibernateProperties());
         return sessionFactory;

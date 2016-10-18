@@ -9,11 +9,11 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import com.simple.training.domain.treino.ExercicioVariante;
-import com.simple.training.domain.treino.LocalTreino;
+import com.simple.training.domain.treino.Categoria;
 import com.simple.training.domain.treino.Treino;
 import com.simple.training.domain.treino.TreinoRepository;
 import com.simple.training.domain.treino.TreinoSpecifications;
+import com.simple.training.domain.treino.exercicio.ExercicioVariante;
 import com.simple.training.domain.usuario.Usuario;
 
 @Service
@@ -23,9 +23,9 @@ public class TreinoServiceImpl implements TreinoService {
     private TreinoRepository repository;
 
 	@Override
-	public List<Treino> getTreinos(LocalDate data, LocalTreino local, Usuario usuario) {
+	public List<Treino> getTreinos(LocalDate data, Categoria local, Usuario usuario) {
 		Specification<Treino> spec = TreinoSpecifications.withFilters(data, local, usuario);
-		return repository.findAll(spec, new Sort(Direction.ASC,"data"));
+		return repository.findAll(spec, new Sort(Direction.ASC,"classificacao"));
 	}
 	
 	@Override
@@ -36,6 +36,11 @@ public class TreinoServiceImpl implements TreinoService {
 			}
 		}
 		return repository.save(treino);
+	}
+
+	@Override
+	public Treino get(Long id) {
+		return repository.findOne(id);
 	}
 	
 }

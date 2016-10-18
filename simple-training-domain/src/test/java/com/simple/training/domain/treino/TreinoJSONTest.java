@@ -15,8 +15,10 @@ public class TreinoJSONTest extends AbstractJSONTestSupport {
     public void jsonCompareFull() throws URISyntaxException, IOException {
         Treino entity = new Treino();
         entity.setID(1L);
-        entity.setData(LocalDate.of(2001, 1, 1));
-        entity.setLocalTreino(LocalTreino.ACADEMIA);
+        entity.setDataInicio(LocalDate.of(2001, 1, 1));
+        entity.setDataFim(LocalDate.of(2001, 1, 10));
+        entity.setCategoria(Categoria.ACADEMIA);
+        entity.setClassificacao("A");
         entity.setUsuario(new Usuario());
         compareJson("complete.json", entity);
     }

@@ -1,4 +1,4 @@
-package com.simple.training.domain.treino;
+package com.simple.training.domain.treino.exercicio;
 
 import java.io.Serializable;
 
@@ -15,7 +15,8 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.simple.training.domain.treino.exercicio.Exercicio;
+import com.simple.training.domain.treino.Status;
+import com.simple.training.domain.treino.Treino;
 import com.simple.training.domain.treino.exercicio.json.ExercicioDeserializer;
 import com.simple.training.domain.treino.exercicio.json.ExercicioSerializer;
 

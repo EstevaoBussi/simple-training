@@ -16,6 +16,7 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 
 import com.simple.training.domain.treino.Treino;
 import com.simple.training.domain.treino.exercicio.Exercicio;
+import com.simple.training.domain.treino.exercicio.ExercicioVariante;
 import com.simple.training.domain.usuario.Usuario;
 
 @SpringBootApplication
@@ -39,6 +40,7 @@ public class WebApplication {
             @Override
             public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
             	config.exposeIdsFor(Treino.class);
+            	config.exposeIdsFor(ExercicioVariante.class);
             	config.exposeIdsFor(Exercicio.class);
             	config.exposeIdsFor(Usuario.class);
             }

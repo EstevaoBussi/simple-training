@@ -33,6 +33,8 @@ public class Usuario implements Serializable {
     @JsonSerialize(using = LocalDateSerializer.class) 
 	@Column(name="DATA_NASCIMENTO")
 	private LocalDate dataNascimento;
+	@Column(name="PERFIL")
+	private Perfil perfil;
 	
 	public String getUsername() {
 		return username;
@@ -64,6 +66,14 @@ public class Usuario implements Serializable {
 	
 	public void setDataNascimento(LocalDate dataNascimento) {
 		this.dataNascimento = dataNascimento;
+	}
+
+	public Perfil getPerfil() {
+		return perfil;
+	}
+
+	public void setPerfil(Perfil perfil) {
+		this.perfil = perfil;
 	}
 	
 }

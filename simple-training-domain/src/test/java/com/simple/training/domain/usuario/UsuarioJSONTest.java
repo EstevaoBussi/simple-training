@@ -17,6 +17,7 @@ public class UsuarioJSONTest extends AbstractJSONTestSupport {
         entity.setDataNascimento(LocalDate.of(2001, 1, 1));
         entity.setEmail("EMAIL");
         entity.setNome("NOME");
+        entity.setPerfil(Perfil.ADMINISTRADOR);
         compareJson("complete.json", entity);
     }
 

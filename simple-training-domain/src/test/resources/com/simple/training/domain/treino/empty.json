@@ -1,7 +1,9 @@
 {
 "id":null,
+"classificacao":null,
 "exercicios":[],
-"localTreino":null,
-"data":null,
+"categoria":null,
+"dataInicio":null,
+"dataFim":null,
 "usuario":null
 }

@@ -24,8 +24,8 @@ public class TreinoRepositoryTest extends AbstractRootEntityRepositoryTestSuppor
 	protected Treino createNewEntity() {
 		Treino entity= new Treino();
 		entity.setUsuario(usuarioRepository.getOne("A"));
-		entity.setData(LocalDate.of(2001, 1, 1));
-		entity.setLocalTreino(LocalTreino.ACADEMIA);
+		entity.setDataInicio(LocalDate.of(2001, 1, 1));
+		entity.setCategoria(Categoria.ACADEMIA);
 		return entity;
 	}
 
@@ -38,8 +38,8 @@ public class TreinoRepositoryTest extends AbstractRootEntityRepositoryTestSuppor
 	protected Treino updateEntity() {
 		Treino entity= new Treino();
 		entity.setUsuario(usuarioRepository.getOne("B"));
-		entity.setData(LocalDate.of(2001, 1, 3));
-		entity.setLocalTreino(LocalTreino.CASA);
+		entity.setDataInicio(LocalDate.of(2001, 1, 3));
+		entity.setCategoria(Categoria.FUNCIONAL);
 		return entity;
 	}
 
@@ -51,8 +51,8 @@ public class TreinoRepositoryTest extends AbstractRootEntityRepositoryTestSuppor
 	@Override
 	protected void checkNewEntity(ResultSet rs) throws SQLException {
 		assertNotNull(rs.getLong("ID"));
-		assertEquals("aced00057372000d6a6176612e74696d652e536572955d84ba1b2248b20c00007870770703000007d1010178", rs.getString("DATA"));
-		assertEquals("ACADEMIA", rs.getString("LOCAL_TREINO"));
+		assertEquals("aced00057372000d6a6176612e74696d652e536572955d84ba1b2248b20c00007870770703000007d1010178", rs.getString("DATA_INICIO"));
+		assertEquals("ACADEMIA", rs.getString("CATEGORIA"));
 		assertEquals("A", rs.getString("USUARIO"));
 	}
 
@@ -64,7 +64,7 @@ public class TreinoRepositoryTest extends AbstractRootEntityRepositoryTestSuppor
 	@Override
 	protected void checkRead(Treino entity) {
 		assertNotNull(entity.getID());
-		assertEquals("CASA", entity.getLocalTreino().name());
+		assertEquals("FUNCIONAL", entity.getCategoria().name());
 		assertEquals("A", entity.getUsuario().getUsername());
 	}
 

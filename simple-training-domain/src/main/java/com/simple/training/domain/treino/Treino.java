@@ -23,6 +23,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.simple.training.domain.json.LocalDateDeserializer;
 import com.simple.training.domain.json.LocalDateSerializer;
+import com.simple.training.domain.treino.exercicio.ExercicioVariante;
 import com.simple.training.domain.usuario.Usuario;
 import com.simple.training.domain.usuario.json.UsuarioDeserializer;
 import com.simple.training.domain.usuario.json.UsuarioSerializer;
@@ -37,15 +38,21 @@ public class Treino implements Serializable	{
 	@Column(name="ID")
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
+	@Column(name="CLASSIFICACAO")
+	private String classificacao;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true, mappedBy="treino")
 	private List<ExercicioVariante> exercicios = new ArrayList<>();
-	@Column(name="LOCAL_TREINO")
+	@Column(name="CATEGORIA")
 	@Enumerated(EnumType.STRING)
-	private LocalTreino localTreino;
+	private Categoria categoria;
 	@JsonDeserialize(using = LocalDateDeserializer.class)  
     @JsonSerialize(using = LocalDateSerializer.class) 
-	@Column(name="DATA")
-	private LocalDate data;
+	@Column(name="DATA_INICIO")
+	private LocalDate dataInicio;
+	@JsonDeserialize(using = LocalDateDeserializer.class)  
+    @JsonSerialize(using = LocalDateSerializer.class) 
+	@Column(name="DATA_FIM")
+	private LocalDate dataFim;
 	@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="USUARIO")
 	@JsonDeserialize(using = UsuarioDeserializer.class)  
@@ -60,6 +67,14 @@ public class Treino implements Serializable	{
 		this.id = id;
 	}
 	
+	public String getClassificacao() {
+		return classificacao;
+	}
+
+	public void setClassificacao(String classificacao) {
+		this.classificacao = classificacao;
+	}
+
 	public List<ExercicioVariante> getExercicios() {
 		return exercicios;
 	}
@@ -71,12 +86,12 @@ public class Treino implements Serializable	{
 		}
 	}
 
-	public LocalTreino getLocalTreino() {
-		return localTreino;
+	public Categoria getCategoria() {
+		return categoria;
 	}
 
-	public void setLocalTreino(LocalTreino localTreino) {
-		this.localTreino = localTreino;
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
 
 	public Usuario getUsuario() {
@@ -87,12 +102,20 @@ public class Treino implements Serializable	{
 		this.usuario = usuario;
 	}
 
-	public LocalDate getData() {
-		return data;
+	public LocalDate getDataInicio() {
+		return dataInicio;
 	}
 
-	public void setData(LocalDate data) {
-		this.data = data;
+	public void setDataInicio(LocalDate dataInicio) {
+		this.dataInicio = dataInicio;
 	}
-	
+
+	public LocalDate getDataFim() {
+		return dataFim;
+	}
+
+	public void setDataFim(LocalDate dataFim) {
+		this.dataFim = dataFim;
+	}
+
 }

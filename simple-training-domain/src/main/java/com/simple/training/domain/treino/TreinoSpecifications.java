@@ -12,17 +12,17 @@ import com.simple.training.domain.usuario.Usuario;
 
 public class TreinoSpecifications {
 
-    public static Specification<Treino> withFilters(LocalDate dataTreino, LocalTreino local, Usuario usuario) {
+    public static Specification<Treino> withFilters(LocalDate dataTreino, Categoria local, Usuario usuario) {
         return (root, query, cb) -> {
             List<Predicate> predicates = new ArrayList<>();
 
-            Predicate predicate = cb.lessThanOrEqualTo(root.get("data"), dataTreino.plusDays(3L));
+            Predicate predicate = cb.lessThanOrEqualTo(root.get("dataInicio"), dataTreino);
             predicates.add(predicate);
 
-            predicate = cb.greaterThanOrEqualTo(root.get("data"), dataTreino.minusDays(3L));
+            predicate = cb.greaterThanOrEqualTo(root.get("dataFim"), dataTreino);
             predicates.add(predicate);
 
-            predicate = cb.equal(root.get("localTreino"), local);
+            predicate = cb.equal(root.get("categoria"), local);
             predicates.add(predicate);
             predicate = cb.equal(root.get("usuario"), usuario);
             predicates.add(predicate);

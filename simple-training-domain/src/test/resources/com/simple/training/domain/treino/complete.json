@@ -1,7 +1,9 @@
 {
 "id":1,
+"classificacao":"A",
 "exercicios":[],
-"localTreino":"ACADEMIA",
-"data":"2001-01-01",
+"categoria":"ACADEMIA",
+"dataInicio":"2001-01-01",
+"dataFim":"2001-01-10",
 "usuario":{}
 }
