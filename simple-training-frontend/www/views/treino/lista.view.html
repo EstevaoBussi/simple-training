@@ -1,39 +1,18 @@
 <div layout-padding layout-align="center center" fill-height >
-    <div ng-show="filter" class="filter-options" md-whiteframe="5">
-        <h4>Data do treino</h4>
-        <md-datepicker ng-model="dataTreino" name="dateField" aria-label="dd/MM/yyyy"></md-datepicker>
+    <div ng-show="filter" class="filter-options" md-whiteframe="5" >
+        <form name="form">
+            <div layout-padding style="padding:10px 0 0 18px"><md-checkbox ng-model="realizado" aria-label="{{::treino.realizado|translate}}" class="md-primary"><span>{{::'treino.realizado'|translate}}</span></md-checkbox></div>
+            <md-input-container>
+                <label>{{::'treino.dataTreino'|translate}}</label>
+                <md-datepicker ng-model="dataTreino" name="dateField" id="dateField" ng-required="true" aria-label="dd/MM/yyyy"></md-datepicker>
+                <div ng-messages="form['dateField'].$error">
+                    <div ng-message="required">{{::'messages.required'|translate}}</div>
+                </div>
+            </md-input-container>
+        </form>
     </div>
-    <md-tabs md-selected="selected" md-dynamic-height md-border-bottom ng-if="treinos">
-        <md-tab label="{{treino.classificacao}}" ng-repeat="treino in treinos" ng-disabled="!treino.exercicios || treino.exercicios.length <= 0">
-            <md-card ng-repeat="exercicio in treino.exercicios" layout="row" >
-                <md-card-title flex="15" flex-xs="25">
-                    <md-card-title-text layout-align="center center" style="max-width: 150px;min-width: 60px">
-                        <span class="md-headline"><img data-ng-src="{{exercicio.exercicio.image.type + ',' + exercicio.exercicio.image.src}}" class="md-card-image" alt="Washed Out" ></span>
-                    </md-card-title-text>
-                </md-card-title>
-                <md-card-content layout="row" layout-padding layout-align="space-between" flex>
-                    <div layout="column" layout-align="center start" hide-xs flex="45">
-                        <span class="line-h-22" title="Exercicio"><b>Exerc:</b> {{exercicio.exercicio.nome}}</span>
-                        <span class="line-h-22" title="Descrição"><b>Desc:</b> {{exercicio.exercicio.descricao}}</span>
-                        <span class="line-h-22" title="Tempo"><b>Temp:</b> {{exercicio.duracao}}</span>
-                    </div>
-                    <div layout="column" layout-align="center start" hide-xs flex="40">
-                        <span class="line-h-22" title="Aparelho"><b md-tooltip="Aparelho">Apar:</b> {{exercicio.aparelho}}</span>
-                        <span class="line-h-22" title="Alternativa"><b>Alter:</b> {{exercicio.alternativa}}</span>
-                        <span class="line-h-22" title="Observação"><b>Obs:</b> {{exercicio.observacao}}</span>
-                    </div>
-                    <div layout="column" layout-align="center start" hide-gt-xs>
-                        <span class="line-h-22" title="Exercicio"><b>Exerc:</b> {{exercicio.exercicio.nome}}</span>
-                        <span class="line-h-22" title="Descrição"><b>Desc:</b> {{exercicio.exercicio.descricao}}</span>
-                        <span class="line-h-22" title="Tempo"><b>Temp:</b> {{exercicio.duracao}}</span>
-                        <span class="line-h-22" title="Aparelho"><b md-tooltip="Aparelho">Apar:</b> {{exercicio.aparelho}}</span>
-                        <span class="line-h-22" title="Alternativa"><b>Alter:</b> {{exercicio.alternativa}}</span>
-                        <span class="line-h-22" title="Observação"><b>Obs:</b> {{exercicio.observacao}}</span>
-                    </div>
-                </md-card-content>
-            </md-card>
-        </md-tab>
-    </md-tabs>
+    <div ng-if="!realizado" ng-include="'/views/treino/disponivel.view.html'"></div>
+    <div ng-if="realizado" ng-include="'/views/treino/realizado.view.html'"></div>
     <div class="button-filter">
         <md-button class="md-fab md-primary md-hue-2" aria-label="Eat cake" ng-click="filter = !filter">
             <md-icon><i class="material-icons">filter_list</i></md-icon>

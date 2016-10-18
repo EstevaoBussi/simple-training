@@ -7,8 +7,8 @@
   "license": "MIT",
   "ignore": ["**/.*",".gitignore","node_modules","bower_components","test","tests","Gruntfile.js","src"],
   "dependencies": {
-    "angular": "~1.5.7",
-    "angular-material": "1.1.0-rc.5",
+    "angular": "1.5.8",
+    "angular-material": "1.1.0",
     "angular-translate": "2.11.0",
     "angular-translate-loader-static-files": "2.11.0",
     "angular-sanitize": "1.5.7",

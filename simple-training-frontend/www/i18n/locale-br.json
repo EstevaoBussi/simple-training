@@ -12,5 +12,12 @@
   },
   "login": {
     "error": "Erro ao tentar efetuar a autenticação do usuário"
+  },
+  "treino": {
+    "dataTreino": "Data do Treino",
+    "realizado": "Realizado"
+  },
+  "messages": {
+    "required": "Campo Requerido"
   }
 }

@@ -221,7 +221,7 @@ md-sidenav md-content {
 }
 .filter-options {
     width: 220px;
-    height: 150px;
+    height: 180px;
     position: absolute;
     bottom: 100px;
     z-index: 10;

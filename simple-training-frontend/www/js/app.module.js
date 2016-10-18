@@ -13,6 +13,7 @@
       'profile-component',
       'treino-module',
       'treino-module-service',
+      'treino-realizado-module-service',
       'login-module',
       'session-service-module',
       'dialog-service',
