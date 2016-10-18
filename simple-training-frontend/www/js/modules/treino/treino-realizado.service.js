@@ -12,5 +12,11 @@ angular.module('treino-realizado-module-service', [])
             });
         }
 
+        module.inserir = function(treinoRealizado) {
+            return transactionExecutor('Executando Treino', function () {
+                return $http.post(constant.apiBaseURL.concat('treinosRealizados'), treinoRealizado, constant.header(SessionService.getToken()));
+            });
+        }
+
         return module;
     }]);

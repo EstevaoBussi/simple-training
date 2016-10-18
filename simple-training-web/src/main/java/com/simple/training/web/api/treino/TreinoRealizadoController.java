@@ -23,7 +23,7 @@ import com.simple.training.domain.usuario.service.UsuarioService;
 import com.simple.training.web.api.exception.CampoObrigatorioException;
 
 @RestController
-@RequestMapping("/api/v1/exerciciosRealizados")
+@RequestMapping("/api/v1/treinosRealizados")
 public class TreinoRealizadoController {
 
 	@Autowired

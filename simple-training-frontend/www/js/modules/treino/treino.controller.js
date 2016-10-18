@@ -1,6 +1,6 @@
 angular.module('treino-module', [])
-.controller('TreinoController', ['$scope', '$stateParams', 'TreinoService',
-                        function ($scope, $stateParams, TreinoService) {
+.controller('TreinoController', ['$scope', '$stateParams', 'TreinoService', 'TreinoRealizadoService', 'dialog', '$mdDialog',
+                        function ($scope, $stateParams, TreinoService, TreinoRealizadoService, dialog, $mdDialog) {
     $scope.tipo = $stateParams.tipo;
     $scope.filter = false;
     $scope.realizado = false;
@@ -22,7 +22,7 @@ angular.module('treino-module', [])
             } else {
                 var dataInicial = moment($scope.dataTreino).date(1);
                 var dataFinal = moment().set('month', dataInicial.get('month') + 1).subtract(1);
-                TreinoService.getTreinos(dataInicial, dataFinal, $scope.tipo).then(function (response) {
+                TreinoRealizadoService.getTreinos(dataInicial, dataFinal, $scope.tipo).then(function (response) {
                     if (response.status == 200 && response.data && response.data.length > 0) {
                         $scope.treinosRealizados = response.data;
                     } else {
@@ -33,4 +33,21 @@ angular.module('treino-module', [])
         }
     });
 
+    $scope.finalizarTreino = function(treino) {
+        var template = '/views/treino/pronpt-date.tmpl.html';
+        var actions = {
+            confirm: function(){
+                var treinoRealizado = {treino:treino,data:moment()};
+                TreinoRealizadoService.inserir(treinoRealizado).then(function(response){
+                    alert('a');
+                },function(response){
+                    alert('b');
+                });
+            },
+            cancel: function(){
+                $mdDialog.hide();
+            }
+        }
+        dialog.pronpt(template, actions);
+    }
 }]);

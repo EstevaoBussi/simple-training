@@ -15,7 +15,10 @@
   },
   "treino": {
     "dataTreino": "Data do Treino",
-    "realizado": "Realizado"
+    "realizado": "Realizado",
+    "executado": "Executado",
+    "cancel": "cancelar",
+    "confirm": "confirmar"
   },
   "messages": {
     "required": "Campo Requerido"

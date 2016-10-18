@@ -30,6 +30,21 @@
                     });
             };
 
+            function DialogController($scope, $mdDialog, actions) {
+                $scope.confirm = actions.confirm;
+                $scope.cancel = actions.cancel;
+            }
+
+            service.pronpt = function(template, actions) {
+                var parentEl = angular.element(document.body);
+                $mdDialog.show({
+                    parent: parentEl,
+                    templateUrl: template,
+                    controller: DialogController,
+                    locals: {actions:actions}
+                });
+            }
+
             return service;
         });
 })();

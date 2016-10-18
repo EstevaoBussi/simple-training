@@ -1,0 +1,22 @@
+<md-dialog aria-label="Treino Executado" name="form">
+    <form ng-cloak>
+        <md-dialog-content layout-padding>
+            <md-input-container>
+                <label>{{::'treino.dataTreino'|translate}}{{a}}</label>
+                <md-datepicker ng-model="data" name="date" id="date" ng-required="true" aria-label="dd/MM/yyyy"></md-datepicker>
+                <div ng-messages="form['date'].$error">
+                    <div ng-message="required">{{::'messages.required'|translate}}</div>
+                </div>
+            </md-input-container>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button ng-click="cancel()">
+                {{::'treino.cancel'|translate}}
+            </md-button>
+            <md-button ng-click="confirm()">
+                {{::'treino.confirm'|translate}}
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>
