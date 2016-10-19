@@ -4,15 +4,12 @@
     <div flex layout="column" tabIndex="-1" role="main" class="md-primary">
         <md-toolbar layout="row" md-whiteframe="1" class="md-primery">
             <div flex layout="row">
-                <div layout="row" layout-align="center center" hide-gt-md flex="20">
+                <div layout="row" layout-align="start center" flex>
                     <md-button hide-gt-md id="main" class="md-fab md-mini md-primary md-hue-2" ng-click="toggleOpen()" aria-label="Show User List" style="min-width: 30px;">
                         <md-icon class="txt-blue material-icons md-toggle-icon" aria-hidden="true">menu</md-icon>
                     </md-button>
                 </div>
-                <div layout="row" layout-align="center start" ng-if="header.system.environment" flex="20">
-                    <span class="header-environment" >{{header.system.environment}}</span>
-                </div>
-                <div layout="row" layout-align="end center" flex>
+                <div layout="row" layout-align="end center" flex="30">
                     <profile options="header.profile" layout-align="end center"></profile>
                 </div>
             </div>

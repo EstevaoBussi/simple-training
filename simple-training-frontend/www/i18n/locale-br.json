@@ -41,7 +41,7 @@
     "porcao": "Porção",
     "calorias": "Valor Calórico",
     "aliemnto": "Alimento",
-    "data": "Data da Refeição",
+    "data": "Data Refeição",
     "cardapio": "Cardapio",
     "buscaError": "Erro ao efetuar busca dos cardapios",
     "emptyList": "A busca não retornou itens."
