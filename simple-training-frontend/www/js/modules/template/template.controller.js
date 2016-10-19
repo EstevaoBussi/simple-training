@@ -48,7 +48,7 @@ angular.module('template-module', [])
                 var page = {
                     name: 'menu.treino.'+value,
                     type: 'link',
-                    state: 'home.content.treino({tipo:value})'
+                    state: 'home.content.treino({tipo:\''+value+'\'})'
                 }
                 $scope.items2[0].pages.push(page);
             });
