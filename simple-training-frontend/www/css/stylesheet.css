@@ -70,7 +70,7 @@ md-sidenav md-content {
     background-color: #9E9E9E;
 }
 .parent-list-item{
-    border-bottom: 1px #9E9E9E solid;
+    border-bottom: 1px #455a64 solid;
 }
 .side-menu .md-button.active {
     color: deeppink;

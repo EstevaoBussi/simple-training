@@ -20,11 +20,14 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages={"com.simple.training.domain.treino.exercicio",
 		"com.simple.training.domain.treino",
+		"com.simple.training.domain.nutri.cardapio",
 		"com.simple.training.domain.treino.realizado",
 		"com.simple.training.domain.usuario"})
 @ComponentScan({ "com.simple.training.web.api.treino",
 	"com.simple.training.web.api.usuario",
+	"com.simple.training.web.api.nutri",
 	"com.simple.training.domain.treino.service",
+	"com.simple.training.domain.nutri.cardapio.service",
 	"com.simple.training.domain.treino.realizado.service",
 	"com.simple.training.domain.treino.exercicio.service",
 	"com.simple.training.domain.usuario.service"})

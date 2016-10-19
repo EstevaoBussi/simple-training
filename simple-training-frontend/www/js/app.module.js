@@ -14,6 +14,8 @@
       'treino-module',
       'treino-module-service',
       'treino-realizado-module-service',
+      'cardapio-module',
+      'cardapio-module-service',
       'login-module',
       'session-service-module',
       'dialog-service',
@@ -63,6 +65,15 @@
                   'content@home': {
                       templateUrl: 'views/treino/lista.view.html',
                       controller: 'TreinoController'
+                  }
+              }
+          })
+          .state('home.content.cardapio', {
+              url: '/cardapio',
+              views: {
+                  'content@home': {
+                      templateUrl: 'views/cardapio/lista.view.html',
+                      controller: 'CardapioController'
                   }
               }
           })

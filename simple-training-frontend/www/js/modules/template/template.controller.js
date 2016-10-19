@@ -55,4 +55,14 @@ angular.module('template-module', [])
         }
     });
 
+    $scope.items2.push({
+        name: 'menu.cardapios',
+        type: 'toggle',
+        pages: [{
+            name: 'menu.cardapio',
+            type: 'link',
+            state: 'home.content.cardapio'
+        }]
+    });
+
 }]);

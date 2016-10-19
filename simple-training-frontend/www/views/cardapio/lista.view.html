@@ -1,0 +1,31 @@
+<div layout-padding layout-align="center center" fill-height >
+    <div ng-show="filter" class="filter-options" md-whiteframe="5" >
+        <form name="form">
+            <md-input-container>
+                <label>{{::'cardapio.data'|translate}}</label>
+                <md-datepicker ng-model="filtro.data" name="dateField" id="dateField" ng-required="true" aria-label="dd/MM/yyyy"></md-datepicker>
+                <div ng-messages="form['dateField'].$error">
+                    <div ng-message="required">{{::'messages.required'|translate}}</div>
+                </div>
+            </md-input-container>
+        </form>
+    </div>
+    <md-tabs md-dynamic-height md-border-bottom ng-if="cardapios" class="slider-animate">
+        <md-tab label="{{::cardapio.data|date:'dd/MM/yyyy'}}" ng-repeat="cardapio in cardapios" >
+            <md-card ng-repeat="refeicao in cardapio.refeicoes" layout-padding>
+                <h4>{{::('cardapio.refeicoes.'+refeicao.periodo)|translate}}</h4>
+                <div ng-repeat="alimento in refeicao.alimentos" layout="column" style="padding: 5px;">
+                    <div><label style="font-weight: bold">{{::('cardapio.alimento')|translate}}:</label> <span>{{alimento.alimento}}</span></div>
+                    <div><label style="font-weight: bold">{{::('cardapio.porcao')|translate}}:</label> <span>{{alimento.quantidade}}</span></div>
+                    <div><label style="font-weight: bold">{{::('cardapio.calorias')|translate}}:</label> <span>{{alimento.calorias}}Kcal</span></div>
+                    <md-divider ng-if="!$last"></md-divider>
+                </div>
+            </md-card>
+        </md-tab>
+    </md-tabs>
+    <div class="button-filter">
+        <md-button class="md-fab md-primary md-hue-2" aria-label="Eat cake" ng-click="filter = !filter">
+            <md-icon><i class="material-icons">filter_list</i></md-icon>
+        </md-button>
+    </div>
+</div>

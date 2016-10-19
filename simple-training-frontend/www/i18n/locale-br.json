@@ -5,7 +5,9 @@
       "ACADEMIA" : "Academia",
       "RPG": "RPG",
       "FUNCIONAL": "Funcional"
-    }
+    },
+    "cardapios" : "Cardapios",
+    "cardapio": "Diário"
   },
   "profile" : {
     "telefone": "Telefone",
@@ -24,6 +26,24 @@
     "confirm": "confirmar",
     "treino": "Treino",
     "buscaError": "Erro ao efetuar busca dos treinos",
+    "emptyList": "A busca não retornou itens."
+  },
+  "cardapio": {
+    "refeicoes": {
+      "CAFE_MANHA": "Café da Manhã",
+      "LANCHE_MANHA": "Lanche da Manhã",
+      "ALMOCO": "Almoço",
+      "LANCHE_TARDE": "Lanche da Tarde",
+      "JANTA": "Janta",
+      "CEIA": "Ceia"
+    },
+    "alimento": "Alimento",
+    "porcao": "Porção",
+    "calorias": "Valor Calórico",
+    "aliemnto": "Alimento",
+    "data": "Data da Refeição",
+    "cardapio": "Cardapio",
+    "buscaError": "Erro ao efetuar busca dos cardapios",
     "emptyList": "A busca não retornou itens."
   },
   "messages": {

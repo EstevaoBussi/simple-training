@@ -16,10 +16,10 @@ public class CardapioSpecifications {
         return (root, query, cb) -> {
             List<Predicate> predicates = new ArrayList<>();
 
-            Predicate predicate = cb.lessThanOrEqualTo(root.get("data"), date.minusDays(3L));
+            Predicate predicate = cb.lessThanOrEqualTo(root.get("data"), date.plusDays(3L));
             predicates.add(predicate);
 
-            predicate = cb.greaterThanOrEqualTo(root.get("data"), date.plusDays(3L));
+            predicate = cb.greaterThanOrEqualTo(root.get("data"), date.minusDays(3L));
             predicates.add(predicate);
 
             predicate = cb.equal(root.get("usuario"), usuario);
