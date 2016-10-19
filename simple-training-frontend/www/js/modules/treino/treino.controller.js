@@ -11,7 +11,7 @@ angular.module('treino-module', [])
 
     $scope.$watch('filtro', function(newValue, oldValue) {
         if($scope.filtro.dataTreino) {
-            if (!$scope.realizado) {
+            if (!$scope.filtro.realizado) {
                 treinosDisponiveis($scope.dateTreino, $scope.tipo, $scope, TreinoService, toast);
             } else {
                 treinosExecutados($scope.dataTreino, $scope.tipo, $scope, TreinoRealizadoService, toast);

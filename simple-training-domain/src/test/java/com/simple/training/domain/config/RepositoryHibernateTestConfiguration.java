@@ -23,6 +23,7 @@ import org.springframework.transaction.support.TransactionTemplate;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages={"com.simple.training.domain.treino",
+									 "com.simple.training.domain.nutri.cardapio",
 		                             "com.simple.training.domain.treino.realizado",
 		                             "com.simple.training.domain.usuario"})
 @ComponentScan({ "com.simple.training.domain.treino" })
