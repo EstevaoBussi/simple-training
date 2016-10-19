@@ -1,3 +1,4 @@
+
 /*
  * Default
  */
@@ -576,4 +577,23 @@ md-sidenav md-content {
     max-width: 300px;
     width: 300px;
     height: 200px;
+}
+
+.slider-animate.ng-enter, .slider-animate.ng-leave {
+    transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.7s;
+    width:100%;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+}
+
+.slider-animate.ng-enter {
+    left:100%;
+}
+.slider-animate.ng-enter.ng-enter-active {
+    left:0;
+}
+.slider-animate.ng-leave.ng-leave-active {
+    left:-100%;
 }

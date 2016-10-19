@@ -1,4 +1,4 @@
-<md-tabs md-dynamic-height md-border-bottom ng-if="treinos">
+<md-tabs md-dynamic-height md-border-bottom ng-if="treinos" class="slider-animate">
     <md-tab label="{{::'treino.treino'|translate}} - {{::treino.classificacao}}" ng-repeat="treino in treinos" ng-disabled="!treino.exercicios || treino.exercicios.length <= 0">
         <md-card ng-repeat="exercicio in treino.exercicios" layout="row" >
             <md-card-title flex="15" flex-xs="25">
