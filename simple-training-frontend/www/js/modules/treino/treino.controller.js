@@ -3,24 +3,14 @@ angular.module('treino-module', [])
                         function ($scope, $stateParams, TreinoService, TreinoRealizadoService, dialog, $mdDialog, toast) {
     $scope.tipo = $stateParams.tipo;
     $scope.filter = false;
-    $scope.realizado = false;
     $scope.filterShow = function(){
         $scope.filter = !$scope.filter;
     };
-    $scope.dataTreino = new Date();
+    $scope.filtro = {};
+    $scope.filtro.dataTreino = new Date();
 
-    $scope.$watch('dataTreino', function(newValue, oldValue) {
-        if($scope.dataTreino) {
-            if (!$scope.realizado) {
-                treinosDisponiveis($scope.dateTreino, $scope.tipo, $scope, TreinoService, toast);
-            } else {
-                treinosExecutados($scope.dataTreino, $scope.tipo, $scope, TreinoRealizadoService, toast);
-            }
-        }
-    });
-
-    $scope.$watch('realizado', function(newValue, oldValue) {
-        if($scope.dataTreino) {
+    $scope.$watch('filtro', function(newValue, oldValue) {
+        if($scope.filtro.dataTreino) {
             if (!$scope.realizado) {
                 treinosDisponiveis($scope.dateTreino, $scope.tipo, $scope, TreinoService, toast);
             } else {
@@ -53,8 +43,12 @@ angular.module('treino-module', [])
 
 function treinosDisponiveis(data, tipo, scope, service, toast){
     service.getTreinos(data, tipo).then(function (response) {
-        if (response.status == 200 && response.data && response.data.length > 0) {
-            scope.treinos = response.data;
+        if (response.status == 200) {
+            if (response.data && response.data.length > 0) {
+                scope.treinos = response.data;
+            } else {
+                toast.alert({message:'treino.emptyList'});
+            }
         } else {
             delete scope.treinos;
             toast.alert({message:'treino.buscaError'});
@@ -66,8 +60,12 @@ function treinosExecutados(data, tipo, scope, service, toast){
     var dataInicial = moment(data).date(1);
     var dataFinal = moment().set('month', dataInicial.get('month') + 1).subtract(1);
     service.getTreinos(dataInicial, dataFinal, tipo).then(function (response) {
-        if (response.status == 200 && response.data && response.data.length > 0) {
-            scope.treinosRealizados = response.data;
+        if (response.status == 200) {
+            if (response.data && response.data.length > 0) {
+                scope.treinosRealizados = response.data;
+            } else {
+                toast.alert({message:'treino.emptyList'});
+            }
         } else {
             delete scope.treinosRealizados;
             toast.alert({message:'treino.buscaError'});

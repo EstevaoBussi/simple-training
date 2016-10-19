@@ -1,10 +1,10 @@
 <div layout-padding layout-align="center center" fill-height >
     <div ng-show="filter" class="filter-options" md-whiteframe="5" >
         <form name="form">
-            <div layout-padding style="padding:10px 0 0 18px"><md-checkbox ng-model="realizado" aria-label="{{::treino.realizado|translate}}" class="md-primary"><span>{{::'treino.realizado'|translate}}</span></md-checkbox></div>
+            <div layout-padding style="padding:10px 0 0 18px"><md-checkbox ng-model="filtro.realizado" aria-label="{{::treino.realizado|translate}}" class="md-primary"><span>{{::'treino.realizado'|translate}}</span></md-checkbox></div>
             <md-input-container>
                 <label>{{::'treino.dataTreino'|translate}}</label>
-                <md-datepicker ng-model="dataTreino" name="dateField" id="dateField" ng-required="true" aria-label="dd/MM/yyyy"></md-datepicker>
+                <md-datepicker ng-model="filtro.dataTreino" name="dateField" id="dateField" ng-required="true" aria-label="dd/MM/yyyy"></md-datepicker>
                 <div ng-messages="form['dateField'].$error">
                     <div ng-message="required">{{::'messages.required'|translate}}</div>
                 </div>

@@ -23,7 +23,8 @@
     "cancel": "cancelar",
     "confirm": "confirmar",
     "treino": "Treino",
-    "buscaError": "Erro ao efetuar busca dos treinos"
+    "buscaError": "Erro ao efetuar busca dos treinos",
+    "emptyList": "A busca não retornou itens."
   },
   "messages": {
     "required": "Campo Requerido"
