@@ -12,9 +12,9 @@ angular.module('treino-module', [])
     $scope.$watch('dataTreino', function(newValue, oldValue) {
         if($scope.dataTreino) {
             if (!$scope.realizado) {
-                treinosDisponiveis($scope.dateTreino, $scope.tipo, $scope, TreinoService);
+                treinosDisponiveis($scope.dateTreino, $scope.tipo, $scope, TreinoService, toast);
             } else {
-                treinosExecutados($scope.dataTreino, $scope.tipo, $scope, TreinoRealizadoService);
+                treinosExecutados($scope.dataTreino, $scope.tipo, $scope, TreinoRealizadoService, toast);
             }
         }
     });
@@ -22,9 +22,9 @@ angular.module('treino-module', [])
     $scope.$watch('realizado', function(newValue, oldValue) {
         if($scope.dataTreino) {
             if (!$scope.realizado) {
-                treinosDisponiveis($scope.dateTreino, $scope.tipo, $scope, TreinoService);
+                treinosDisponiveis($scope.dateTreino, $scope.tipo, $scope, TreinoService, toast);
             } else {
-                treinosExecutados($scope.dataTreino, $scope.tipo, $scope, TreinoRealizadoService);
+                treinosExecutados($scope.dataTreino, $scope.tipo, $scope, TreinoRealizadoService, toast);
             }
         }
     });
@@ -51,7 +51,7 @@ angular.module('treino-module', [])
     }
 }]);
 
-function treinosDisponiveis(data, tipo, scope, service){
+function treinosDisponiveis(data, tipo, scope, service, toast){
     service.getTreinos(data, tipo).then(function (response) {
         if (response.status == 200 && response.data && response.data.length > 0) {
             scope.treinos = response.data;
@@ -62,7 +62,7 @@ function treinosDisponiveis(data, tipo, scope, service){
     });
 }
 
-function treinosExecutados(data, tipo, scope, service){
+function treinosExecutados(data, tipo, scope, service, toast){
     var dataInicial = moment(data).date(1);
     var dataFinal = moment().set('month', dataInicial.get('month') + 1).subtract(1);
     service.getTreinos(dataInicial, dataFinal, tipo).then(function (response) {

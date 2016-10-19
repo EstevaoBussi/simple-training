@@ -2,7 +2,7 @@
   angular.module('sidemenu-component', [])
       .directive('sidemenu', sidemenuDirective);
 
-  function sidemenuDirective($parse){
+  function sidemenuDirective($parse, $mdSidenav){
     return {
       restrict: 'E',
       replace:true,
@@ -38,6 +38,7 @@
 
         scope.selectItem = function(link) {
           scope.selected = angular.isNumber(link) ? scope.items[link] : link;
+          $mdSidenav('left').toggle();
         }
 
 
