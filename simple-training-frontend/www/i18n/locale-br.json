@@ -1,8 +1,11 @@
 {
   "menu" : {
     "treinos" : "Treinos",
-    "academia" : "Academia",
-    "casa" : "Casa"
+    "treino": {
+      "ACADEMIA" : "Academia",
+      "RPG": "RPG",
+      "FUNCIONAL": "Funcional"
+    }
   },
   "profile" : {
     "telefone": "Telefone",

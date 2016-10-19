@@ -3,6 +3,10 @@ angular.module('treino-module-service', [])
     function (transactionExecutor, $http, constant, SessionService) {
         var module = {};
 
+        module.getCategorias = function () {
+            return $http.get(constant.apiBaseURL.concat('treinos/categorias'), constant.header(SessionService.getToken()));
+        }
+
         module.getTreinos = function (data, tipo) {
             return transactionExecutor('Carregando Treinos', function () {
                 return $http.get(constant.apiBaseURL.concat('treinos?dataTreino=').concat(moment(data).format('YYYY-MM-DD'))

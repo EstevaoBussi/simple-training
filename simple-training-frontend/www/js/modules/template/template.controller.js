@@ -1,6 +1,6 @@
 angular.module('template-module', [])
-.controller('TemplateController', ['$scope', '$mdSidenav', 'SessionService', '$state',
-                          function ($scope, $mdSidenav, SessionService, $state) {
+.controller('TemplateController', ['$scope', '$mdSidenav', 'SessionService', '$state', 'TreinoService',
+                          function ($scope, $mdSidenav, SessionService, $state, TreinoService) {
 
     $scope.sidemenu = {};
     $scope.header = {};
@@ -39,16 +39,20 @@ angular.module('template-module', [])
     $scope.items2.push({
         name: 'menu.treinos',
         type: 'toggle',
-        pages: [{
-            name: 'menu.academia',
-            type: 'link',
-            state: 'home.content.treino({tipo:\'ACADEMIA\'})'
-        },
-        {
-            name: 'menu.casa',
-            type: 'link',
-            state: 'home.content.treino({tipo:\'CASA\'})'
-        }]
+        pages: []
+    });
+
+    TreinoService.getCategorias().then(function(response){
+        if (response.status == 200 && response.data) {
+            angular.forEach(response.data, function (value, key) {
+                var page = {
+                    name: 'menu.treino.'+value,
+                    type: 'link',
+                    state: 'home.content.treino({tipo:value})'
+                }
+                $scope.items2[0].pages.push(page);
+            });
+        }
     });
 
 }]);
