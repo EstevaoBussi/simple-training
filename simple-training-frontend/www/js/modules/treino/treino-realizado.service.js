@@ -5,8 +5,8 @@ angular.module('treino-realizado-module-service', [])
 
         module.getTreinos = function (dataInicio, dataFim, tipo) {
             return transactionExecutor('Carregando Treinos', function () {
-                return $http.get(constant.apiBaseURL.concat('treinosRealizados?dataInicio=').concat(dataInicio ? moment(dataInicio).format('YYYY-MM-DD') : null)
-                    .concat('&dataFim=').concat(dataFim ? moment(dataFim).format('YYYY-MM-DD') : null)
+                return $http.get(constant.apiBaseURL.concat('treinosRealizados?dataInicial=').concat(dataInicio ? moment(dataInicio).format('YYYY-MM-DD') : null)
+                    .concat('&dataFinal=').concat(dataFim ? moment(dataFim).format('YYYY-MM-DD') : null)
                     .concat('&categoria=').concat(tipo)
                     .concat('&usuario=').concat(SessionService.getUser().username), constant.header(SessionService.getToken()));
             });

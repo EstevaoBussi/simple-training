@@ -18,7 +18,9 @@
     "realizado": "Realizado",
     "executado": "Executado",
     "cancel": "cancelar",
-    "confirm": "confirmar"
+    "confirm": "confirmar",
+    "treino": "Treino",
+    "buscaError": "Erro ao efetuar busca dos treinos"
   },
   "messages": {
     "required": "Campo Requerido"
