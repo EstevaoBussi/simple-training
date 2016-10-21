@@ -1,5 +1,7 @@
 package com.simple.training.web.api.usuario;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.simple.training.domain.usuario.Usuario;
@@ -20,6 +23,11 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioService usuarioService;
+    
+    @RequestMapping(value = "/byName", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Usuario> get(@RequestParam(value="nome") String nome) throws Exception {
+        return usuarioService.findByName(nome);
+    }
     
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Usuario get(@AuthenticationPrincipal TokenAuthentication auth) throws Exception {

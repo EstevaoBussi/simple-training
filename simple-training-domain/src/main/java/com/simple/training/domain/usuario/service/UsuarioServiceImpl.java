@@ -1,10 +1,16 @@
 package com.simple.training.domain.usuario.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import com.simple.training.domain.usuario.Usuario;
 import com.simple.training.domain.usuario.UsuarioRepository;
+import com.simple.training.domain.usuario.UsuarioSpecifications;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
@@ -17,9 +23,15 @@ public class UsuarioServiceImpl implements UsuarioService {
 		return repository.findByEmail(email);
 	}
     
+    @Override
+	public List<Usuario> findByName(String name) {
+    	Specification<Usuario> spec = UsuarioSpecifications.filterName(name);
+		return repository.findAll(spec, new Sort(Direction.ASC,"nome"));
+	}
+    
 	@Override
-	public Usuario getUsuario(String username) {
-		return repository.getOne(username);
+	public Usuario getUsuario(Long codigo) {
+		return repository.getOne(codigo);
 	}
 
 	@Override

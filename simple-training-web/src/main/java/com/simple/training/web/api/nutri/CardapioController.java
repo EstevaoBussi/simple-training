@@ -6,7 +6,6 @@ import java.util.List;
 import javax.transaction.Transactional;
 import javax.ws.rs.QueryParam;
 
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
@@ -32,11 +31,11 @@ public class CardapioController {
 	
 	@RequestMapping(method = RequestMethod.GET)
     public List<Cardapio> getAll(@RequestParam(value="data") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate data, 
-    		                       @QueryParam(value="usuario") String usuario) throws Exception {
+    		                       @QueryParam(value="usuario") Long usuario) throws Exception {
 		if (data == null) {
     		throw new CampoObrigatorioException("data");
 		}
-		if (StringUtils.isBlank(usuario)) {
+		if (usuario == null) {
     		throw new CampoObrigatorioException("usuario");
 		}
         return cardapioService.getCardapios(data, usuarioService.getUsuario(usuario));

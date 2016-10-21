@@ -8,7 +8,7 @@ angular.module('treino-realizado-module-service', [])
                 return $http.get(constant.apiBaseURL.concat('treinosRealizados?dataInicial=').concat(dataInicio ? moment(dataInicio).format('YYYY-MM-DD') : null)
                     .concat('&dataFinal=').concat(dataFim ? moment(dataFim).format('YYYY-MM-DD') : null)
                     .concat('&categoria=').concat(tipo)
-                    .concat('&usuario=').concat(SessionService.getUser().username), constant.header(SessionService.getToken()));
+                    .concat('&usuario=').concat(SessionService.getUser().codigo), constant.header(SessionService.getToken()));
             });
         }
 

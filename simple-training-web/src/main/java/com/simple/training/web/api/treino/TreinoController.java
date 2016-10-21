@@ -6,7 +6,6 @@ import java.util.List;
 import javax.transaction.Transactional;
 import javax.ws.rs.QueryParam;
 
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
@@ -34,14 +33,14 @@ public class TreinoController {
 	@RequestMapping(method = RequestMethod.GET)
     public List<Treino> getAll(@RequestParam(value="dataTreino") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate data, 
     		                       @QueryParam(value="categoria") String categoria, 
-    		                       @QueryParam(value="usuario") String usuario) throws Exception {
+    		                       @QueryParam(value="usuario") Long usuario) throws Exception {
 		if (data == null) {
     		throw new CampoObrigatorioException("dataTreino");
 		}
 		if (categoria == null) {
     		throw new CampoObrigatorioException("categoria");
 		}
-		if (StringUtils.isBlank(usuario)) {
+		if (usuario == null) {
     		throw new CampoObrigatorioException("usuario");
 		}
         return treinoService.getTreinos(data, Categoria.valueOf(categoria), usuarioService.getUsuario(usuario));

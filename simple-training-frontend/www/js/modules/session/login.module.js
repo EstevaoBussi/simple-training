@@ -19,12 +19,12 @@ angular.module('login-module',[])
                 var profile = googleUser.getBasicProfile();
                 var auth = googleUser.getAuthResponse();
                 var token = auth.id_token;
-                $scope.user = {};
                 try {
                     SessionService.setToken(token);
                     getUsuario(token).then(function (response) {
                         if (response.status == 200 && response.data) {
-                            SessionService.setUser(response.data);
+                            $scope.user = response.data;
+                            SessionService.setUser($scope.user);
                             $state.go('home', {});
                         } else {
                             $scope.error();

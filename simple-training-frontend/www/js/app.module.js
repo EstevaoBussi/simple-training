@@ -11,6 +11,9 @@
       'template-module',
       'sidemenu-component',
       'profile-component',
+      'date-component',
+      'administracao-usuario-module',
+      'usuario-module-service',
       'treino-module',
       'treino-module-service',
       'treino-realizado-module-service',
@@ -74,6 +77,15 @@
                   'content@home': {
                       templateUrl: 'views/cardapio/lista.view.html',
                       controller: 'CardapioController'
+                  }
+              }
+          })
+          .state('home.content.admUsuario', {
+              url: '/administracao-usuario',
+              views: {
+                  'content@home': {
+                      templateUrl: 'views/administracao/usuario/form.view.html',
+                      controller: 'AdministracaoUsuarioController'
                   }
               }
           })

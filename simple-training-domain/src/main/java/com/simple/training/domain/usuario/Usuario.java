@@ -5,10 +5,10 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.Proxy;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -17,17 +17,17 @@ import com.simple.training.domain.json.LocalDateSerializer;
 
 @Entity
 @Table(name = "USUARIO")
-@Proxy(lazy=false)
 public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="USERNAME")
-	private String username;
-	@Column(name="NOME")
+	@Column(name="CODIGO")
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long codigo;
+	@Column(name="NOME", unique=true)
 	private String nome;
-	@Column(name="EMAIL")
+	@Column(name="EMAIL", unique=true)
 	private String email;
 	@JsonDeserialize(using = LocalDateDeserializer.class)  
     @JsonSerialize(using = LocalDateSerializer.class) 
@@ -36,14 +36,14 @@ public class Usuario implements Serializable {
 	@Column(name="PERFIL")
 	private Perfil perfil;
 	
-	public String getUsername() {
-		return username;
+	public Long getCodigo() {
+		return codigo;
 	}
-	
-	public void setUsername(String username) {
-		this.username = username;
+
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
 	}
-	
+
 	public String getNome() {
 		return nome;
 	}

@@ -37,9 +37,20 @@ angular.module('template-module', [])
     }
 
     $scope.items2.push({
+        name: 'menu.administracao.label',
+        type: 'toggle',
+        pages: [{
+            name: 'menu.administracao.usuario',
+            type: 'link',
+            state: 'home.content.admUsuario'
+        }]
+    });
+
+    var pages = [];
+    $scope.items2.push({
         name: 'menu.treinos',
         type: 'toggle',
-        pages: []
+        pages: pages
     });
 
     TreinoService.getCategorias().then(function(response){
@@ -50,7 +61,7 @@ angular.module('template-module', [])
                     type: 'link',
                     state: 'home.content.treino({tipo:\''+value+'\'})'
                 }
-                $scope.items2[0].pages.push(page);
+                pages.push(page);
             });
         }
     });

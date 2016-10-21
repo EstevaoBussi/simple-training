@@ -11,7 +11,7 @@ angular.module('treino-module-service', [])
             return transactionExecutor('Carregando Treinos', function () {
                 return $http.get(constant.apiBaseURL.concat('treinos?dataTreino=').concat(moment(data).format('YYYY-MM-DD'))
                     .concat('&categoria=').concat(tipo)
-                    .concat('&usuario=').concat(SessionService.getUser().username), constant.header(SessionService.getToken()));
+                    .concat('&usuario=').concat(SessionService.getUser().codigo), constant.header(SessionService.getToken()));
             });
         }
 

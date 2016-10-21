@@ -26,8 +26,8 @@ public class UsuarioSerializer extends StdSerializer<Usuario>{
 	public void serialize(Usuario usuario, JsonGenerator json, SerializerProvider arg2) throws IOException {
 		if (usuario != null) {
 			json.writeStartObject();
-			if (!StringUtils.isEmpty(usuario.getUsername())) {
-				json.writeStringField("username",usuario.getUsername());
+			if (!StringUtils.isEmpty(usuario.getCodigo())) {
+				json.writeNumberField("username",usuario.getCodigo());
 			}
 			if (usuario.getDataNascimento() != null) {
 				json.writeStringField("dataNascimento", usuario.getDataNascimento().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));

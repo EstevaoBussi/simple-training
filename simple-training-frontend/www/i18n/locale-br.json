@@ -1,6 +1,10 @@
 {
   "menu" : {
     "treinos" : "Treinos",
+    "administracao": {
+      "label": "Administração",
+      "usuario": "Usuário"
+    },
     "treino": {
       "ACADEMIA" : "Academia",
       "RPG": "RPG",
@@ -8,6 +12,22 @@
     },
     "cardapios" : "Cardapios",
     "cardapio": "Diário"
+  },
+  "administracao": {
+    "usuario": {
+      "titulo": "Adm. Usuário",
+      "username": "Username",
+      "nome": "Nome",
+      "dataNascimento": "Data Nascimento",
+      "email": "E-mail",
+      "perfil": "Perfil",
+      "empty": "Novo usuário",
+      "ADMINISTRADOR":"Administrador",
+      "USUARIO": "Usuário Comum",
+      "salvar": "Salvar",
+      "sucesso":"Usuário salvo com sucesso.",
+      "erro":"Erro ao tentar salvar o usuário."
+    }
   },
   "profile" : {
     "telefone": "Telefone",
@@ -47,6 +67,10 @@
     "emptyList": "A busca não retornou itens."
   },
   "messages": {
-    "required": "Campo Requerido"
+    "required": "Campo Requerido",
+    "email": "Email invalido"
+  },
+  "components": {
+    "select":"Selecione"
   }
 }

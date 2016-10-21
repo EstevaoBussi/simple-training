@@ -13,14 +13,14 @@ import org.springframework.test.context.jdbc.Sql;
 import com.simple.training.domain.support.AbstractRootEntityRepositoryTestSupport;
 
 @Sql("usuario-repository-setup.sql")
-public class UsuarioRepositoryTest extends AbstractRootEntityRepositoryTestSupport <Usuario, String, UsuarioRepository> {
+public class UsuarioRepositoryTest extends AbstractRootEntityRepositoryTestSupport <Usuario, Long, UsuarioRepository> {
 	@Autowired
 	private UsuarioRepository repository;
 	
 	@Override
 	protected Usuario createNewEntity() {
 		Usuario entity = new Usuario();
-		entity.setUsername("USERNAME");
+		entity.setCodigo(0L);
 		entity.setDataNascimento(LocalDate.of(2001, 1, 1));
 		entity.setEmail("EMAIL");
 		entity.setNome("NOME");
@@ -28,14 +28,13 @@ public class UsuarioRepositoryTest extends AbstractRootEntityRepositoryTestSuppo
 	}
 
 	@Override
-	protected String getKey(Usuario entity) {
-		return entity.getUsername();
+	protected Long getKey(Usuario entity) {
+		return entity.getCodigo();
 	}
 
 	@Override
 	protected Usuario updateEntity() {
 		Usuario entity = new Usuario();
-		entity.setUsername("USERNAME2");
 		entity.setDataNascimento(LocalDate.of(2001, 1, 2));
 		entity.setEmail("EMAIL2");
 		entity.setNome("NOME2");
@@ -44,24 +43,24 @@ public class UsuarioRepositoryTest extends AbstractRootEntityRepositoryTestSuppo
 
 	@Override
 	protected String loadQuery() {
-		return "SELECT * FROM USUARIO WHERE USERNAME = ?";
+		return "SELECT * FROM USUARIO WHERE CODIGO = ?";
 	}
 
 	@Override
 	protected void checkNewEntity(ResultSet rs) throws SQLException {
 		assertEquals("NOME", rs.getString("NOME"));
-		assertEquals("USERNAME", rs.getString("USERNAME"));
+		assertEquals("0", rs.getString("CODIGO"));
 	}
 
 	@Override
-	protected String getExistentEntityKey() {
-		return "USERNAMEE";
+	protected Long getExistentEntityKey() {
+		return 0L;
 	}
 
 	@Override
 	protected void checkRead(Usuario entity) {
 		assertNotNull(entity);
-		assertEquals("USERNAMEE", entity.getUsername());
+		assertNotNull(entity.getCodigo());
 		assertEquals("NOMEE", entity.getNome());
 	}
 

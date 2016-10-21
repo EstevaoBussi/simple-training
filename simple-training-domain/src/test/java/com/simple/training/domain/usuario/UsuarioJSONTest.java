@@ -13,7 +13,7 @@ public class UsuarioJSONTest extends AbstractJSONTestSupport {
     @Test
     public void jsonCompareFull() throws URISyntaxException, IOException {
         Usuario entity = new Usuario();
-        entity.setUsername("USERNAME");
+        entity.setCodigo(0L);
         entity.setDataNascimento(LocalDate.of(2001, 1, 1));
         entity.setEmail("EMAIL");
         entity.setNome("NOME");

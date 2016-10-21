@@ -31,7 +31,7 @@ public class UsuarioDeserializer extends StdDeserializer<Usuario>{
 			throws IOException, JsonProcessingException {
 		JsonNode node = jp.getCodec().readTree(jp);
 		if (node != null) {
-			return usuarioService.getUsuario(node.get("username").asText());
+			return usuarioService.getUsuario(node.get("codigo").asLong());
 		}
         return null;
 	}

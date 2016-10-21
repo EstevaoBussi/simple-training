@@ -1,0 +1,58 @@
+<form name="form" class="md-inline-form">
+    <md-card layout="column" layout-padding layout-align="start start" class="slider-animate" flex-md="50" flex-gt-md="50" flex-lg="50" flex-gt-lg="50" class="md-inline-form">
+        <h2>{{::'administracao.usuario.titulo'|translate}} ({{usuario.codigo ? usuario.codigo : 'Novo'}})</h2>
+        <div layout="column" flex style="width: 100%">
+            <md-autocomplete flex
+                    ng-required="true"
+                    md-input-name="autocomplete"
+                    md-input-minlength="3"
+                    md-input-maxlength="40"
+                    md-selected-item="selectedItem"
+                    md-search-text-change="searchTextChange(usuario.nome)"
+                    md-search-text="usuario.nome"
+                    md-selected-item-change="selectedItemChange(item)"
+                    md-items="item in querySearch(usuario.nome)"
+                    md-item-text="item.nome"
+                    md-floating-label="{{::'administracao.usuario.nome'|translate}}">
+                <md-item-template>
+                    <span md-highlight-text="usuario.nome" md-highlight-flags="^i">{{item.nome}}</span>
+                </md-item-template>
+                <md-not-found>
+                    {{::'administracao.usuario.empty'|translate}}
+                </md-not-found>
+                <div ng-messages="form.autocomplete.$error" role="alert" multiple ng-if="form.autocomplete.$touched">
+                    <div ng-message="required" >{{::'messages.required'|translate}}</div>
+                </div>
+            </md-autocomplete>
+            <md-input-container flex>
+                <label>{{::'administracao.usuario.email'|translate}}</label>
+                <input ng-model="usuario.email" type="email" required="true" name="email">
+                <div ng-messages="form.email.$error" role="alert" multiple>
+                    <div ng-message="required" >{{::'messages.required'|translate}}</div>
+                    <div ng-message="pattern" >{{::'messages.email'|translate}}</div>
+                </div>
+            </md-input-container>
+            <md-input-container flex>
+                <label>{{::'administracao.usuario.perfil'|translate}}</label>
+                <md-select ng-model="usuario.perfil" required name="perfil" >
+                    <md-option ng-disabled="true"><em>{{::'components.select'|translate}}</em></md-option>
+                    <md-option ng-value="'ADMINISTRADOR'" >{{::'administracao.usuario.ADMINISTRADOR'|translate}}</md-option>
+                    <md-option ng-value="'USUARIO'" >{{::'administracao.usuario.USUARIO'|translate}}</md-option>
+                </md-select>
+                <div ng-messages="form.perfil.$error" role="alert" multiple>
+                    <div ng-message="required" >{{::'messages.required'|translate}}</div>
+                </div>
+            </md-input-container>
+            <md-input-container flex>
+                <label>{{::'administracao.usuario.dataNascimento'|translate}}</label>
+                <md-datepicker ng-model="usuario.dataNascimento" date-converter name="dataNascimento" ng-required="true" ></md-datepicker>
+                <div ng-messages="form['dataNascimento'].$error">
+                    <div ng-message="required">{{::'messages.required'|translate}}</div>
+                </div>
+            </md-input-container>
+        </div>
+    </md-card>
+    <div layout="row" layout-align="end center" class="slider-animate" flex-md="50" flex-gt-md="50" flex-lg="50" flex-gt-lg="50">
+        <md-button class="md-primary" ng-disabled="form.$invalid" ng-click="form.$valid ? salvar(usuario) : null" >{{::'administracao.usuario.salvar'|translate}}</md-button>
+    </div>
+</form>
