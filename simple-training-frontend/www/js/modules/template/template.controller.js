@@ -1,6 +1,6 @@
 angular.module('template-module', [])
-.controller('TemplateController', ['$scope', '$mdSidenav', 'SessionService', '$state', 'TreinoService',
-                          function ($scope, $mdSidenav, SessionService, $state, TreinoService) {
+.controller('TemplateController', ['$scope', '$mdSidenav', 'SessionService', '$state', 'TreinoService', 'SessionService',
+                          function ($scope, $mdSidenav, SessionService, $state, TreinoService, SessionService) {
 
     $scope.sidemenu = {};
     $scope.header = {};
@@ -36,15 +36,17 @@ angular.module('template-module', [])
         $mdSidenav('left').toggle();
     }
 
-    $scope.items2.push({
-        name: 'menu.administracao.label',
-        type: 'toggle',
-        pages: [{
-            name: 'menu.administracao.usuario',
-            type: 'link',
-            state: 'home.content.admUsuario'
-        }]
-    });
+    if (SessionService.getUser() && SessionService.getUser().perfil == 'ADMINISTRADOR') {
+        $scope.items2.push({
+            name: 'menu.administracao.label',
+            type: 'toggle',
+            pages: [{
+                name: 'menu.administracao.usuario',
+                type: 'link',
+                state: 'home.content.admUsuario'
+            }]
+        });
+    }
 
     var pages = [];
     $scope.items2.push({
