@@ -14,6 +14,8 @@
       'date-component',
       'administracao-usuario-module',
       'usuario-module-service',
+      'administracao-exercicio-module',
+      'exercicio-module-service',
       'treino-module',
       'treino-module-service',
       'treino-realizado-module-service',
@@ -25,6 +27,7 @@
       'transaction-service',
       'toast-service',
       'config-app',
+      'naif.base64',
       'ngMessages'
     ]).config(function($translateProvider, configProvider) {
       configProvider.config.setFormLocale('br');
@@ -86,6 +89,15 @@
                   'content@home': {
                       templateUrl: 'views/administracao/usuario/form.view.html',
                       controller: 'AdministracaoUsuarioController'
+                  }
+              }
+          })
+          .state('home.content.admExercicio', {
+              url: '/administracao-exercicio',
+              views: {
+                  'content@home': {
+                      templateUrl: 'views/administracao/exercicio/form.view.html',
+                      controller: 'AdministracaoExercicioController'
                   }
               }
           })

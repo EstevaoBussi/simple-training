@@ -1,0 +1,70 @@
+<form name="form" class="md-inline-form">
+    <md-card layout="column" layout-padding layout-align="start start" class="slider-animate" flex-md="50" flex-gt-md="50" flex-lg="50" flex-gt-lg="50" class="md-inline-form">
+        <h2>{{::'administracao.exercicio.titulo'|translate}} ({{exercicio.id ? exercicio.id : 'Novo'}})</h2>
+        <div layout="column" flex style="width: 100%">
+            <div layout="row" >
+                <md-autocomplete flex
+                                 ng-required="true"
+                                 md-input-name="autocomplete"
+                                 md-input-minlength="3"
+                                 md-input-maxlength="40"
+                                 md-selected-item="selectedItem"
+                                 md-search-text-change="searchTextChange(exercicio.nome)"
+                                 md-search-text="exercicio.nome"
+                                 md-selected-item-change="selectedItemChange(item)"
+                                 md-items="item in querySearch(exercicio.nome)"
+                                 md-item-text="item.nome"
+                                 md-floating-label="{{::'administracao.exercicio.nome'|translate}}">
+                    <md-item-template>
+                        <span md-highlight-text="exercicio.nome" md-highlight-flags="^i">{{item.nome}}</span>
+                    </md-item-template>
+                    <md-not-found>
+                        {{::'administracao.exercicio.empty'|translate}}
+                    </md-not-found>
+                    <div ng-messages="form.autocomplete.$error" role="alert" multiple ng-if="form.autocomplete.$touched">
+                        <div ng-message="required" >{{::'messages.required'|translate}}</div>
+                    </div>
+                </md-autocomplete>
+                <md-input-container flex>
+                    <label>{{::'administracao.exercicio.descricao'|translate}}</label>
+                    <input ng-model="exercicio.descricao" type="text" required="true" name="descricao">
+                    <div ng-messages="form.descricao.$error" role="alert" multiple>
+                        <div ng-message="required" >{{::'messages.required'|translate}}</div>
+                    </div>
+                </md-input-container>
+            </div>
+            <md-input-container flex>
+                <label>{{::'administracao.exercicio.grupoMuscular'|translate}}</label>
+                <md-select ng-model="exercicio.grupoMuscular" ng-required="true" name="grupo" >
+                    <md-option ng-disabled="true"><em>{{::'components.select'|translate}}</em></md-option>
+                    <md-option ng-value="'PEITORAL'" >{{::'administracao.exercicio.PEITORAL'|translate}}</md-option>
+                    <md-option ng-value="'COSTAS'" >{{::'administracao.exercicio.COSTAS'|translate}}</md-option>
+                    <md-option ng-value="'BICEPS'" >{{::'administracao.exercicio.BICEPS'|translate}}</md-option>
+                    <md-option ng-value="'TRICEPS'" >{{::'administracao.exercicio.TRICEPS'|translate}}</md-option>
+                    <md-option ng-value="'DELTOIDES'" >{{::'administracao.exercicio.DELTOIDES'|translate}}</md-option>
+                    <md-option ng-value="'QUADRICEPS'" >{{::'administracao.exercicio.QUADRICEPS'|translate}}</md-option>
+                    <md-option ng-value="'ISQUIOTIBIAIS'" >{{::'administracao.exercicio.ISQUIOTIBIAIS'|translate}}</md-option>
+                    <md-option ng-value="'PANTURRILHAS'" >{{::'administracao.exercicio.PANTURRILHAS'|translate}}</md-option>
+                    <md-option ng-value="'ABDOMINAIS'" >{{::'administracao.exercicio.ABDOMINAIS'|translate}}</md-option>
+                </md-select>
+                <div ng-messages="form.perfil.$error" role="alert" multiple>
+                    <div ng-message="required" >{{::'messages.required'|translate}}</div>
+                </div>
+            </md-input-container>
+            <div layout-gt-xs="row" flex>
+                <div  flex="20" ng-if="exercicio.image">
+                    <img style="width: 100%;height: auto;" data-ng-src="{{exercicio.image.type + ',' + exercicio.image.src}}" class="md-card-image" alt="Washed Out" >
+                </div>
+                <label style="height: 20px !important" class="md-raised md-button md-ink-ripple" for="image" id="imageInput">
+                    <md-icon class="material-icons md-toggle-icon" aria-hidden="true">get_app</md-icon>
+                    {{::'components.upload'|translate}}
+                </label>
+                <input id="image" name="image" type="file" ng-model="exercicio.image" base-sixty-four-input ng-required="true" ng-hide="true">
+            </div>
+        </div>
+    </md-card>
+    <div layout="row" layout-align="end center" class="slider-animate" flex-md="50" flex-gt-md="50" flex-lg="50" flex-gt-lg="50">
+        <md-button class="md-warn" ng-click="exercicio = {}" >{{::'administracao.exercicio.limpar'|translate}}</md-button>
+        <md-button class="md-primary" ng-disabled="form.$invalid" ng-click="form.$valid ? salvar(exercicio) : null" >{{::'administracao.exercicio.salvar'|translate}}</md-button>
+    </div>
+</form>

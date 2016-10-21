@@ -44,6 +44,10 @@ angular.module('template-module', [])
                 name: 'menu.administracao.usuario',
                 type: 'link',
                 state: 'home.content.admUsuario'
+            }, {
+                name: 'menu.administracao.exercicio',
+                type: 'link',
+                state: 'home.content.admExercicio'
             }]
         });
     }

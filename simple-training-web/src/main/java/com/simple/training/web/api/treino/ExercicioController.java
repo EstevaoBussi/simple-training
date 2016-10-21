@@ -1,5 +1,7 @@
 package com.simple.training.web.api.treino;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,11 @@ public class ExercicioController {
 
 	@Autowired
 	private ExercicioService service;
+	
+	@RequestMapping(value = "/byName", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Exercicio> get(@RequestParam(value="nome") String nome) throws Exception {
+        return service.findByName(nome);
+    }
 	
 	@RequestMapping(method = RequestMethod.GET)
     public Exercicio get(@RequestParam(value="id") Long id) throws Exception {

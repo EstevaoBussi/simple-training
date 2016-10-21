@@ -3,7 +3,8 @@
     "treinos" : "Treinos",
     "administracao": {
       "label": "Administração",
-      "usuario": "Usuário"
+      "usuario": "Usuário",
+      "exercicio": "Exercício"
     },
     "treino": {
       "ACADEMIA" : "Academia",
@@ -27,6 +28,27 @@
       "salvar": "Salvar",
       "sucesso":"Usuário salvo com sucesso.",
       "erro":"Erro ao tentar salvar o usuário."
+    },
+    "exercicio": {
+      "titulo": "Adm. Exercicio",
+      "nome": "Nome",
+      "descricao": "Descrição",
+      "grupoMuscular": "Grupo Muscular",
+      "img": "Imagem",
+      "empty": "Novo Exercício",
+      "salvar": "Salvar",
+      "limpar": "Limpar",
+      "sucesso": "Exercício salvo com sucesso.",
+      "erro": "Erro ao tentar salvar o exercício.",
+      "PEITORAL": "Peitoral",
+      "COSTAS": "Costas",
+      "BICEPS": "Biceps",
+      "TRICEPS": "Triceps",
+      "DELTOIDES": "Deltoides",
+      "QUADRICEPS": "Quadriceps",
+      "ISQUIOTIBIAIS": "Isquiotibiais",
+      "PANTURRILHAS": "Panturrilhas",
+      "ABDOMINAIS": "Abdominais"
     }
   },
   "profile" : {
@@ -71,6 +93,7 @@
     "email": "Email invalido"
   },
   "components": {
-    "select":"Selecione"
+    "select":"Selecione",
+    "upload": "Upload"
   }
 }

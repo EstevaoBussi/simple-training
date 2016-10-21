@@ -1,4 +1,4 @@
-package com.simple.training.domain.usuario;
+package com.simple.training.domain.treino.exercicio;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,9 +8,9 @@ import javax.persistence.criteria.Predicate;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.util.StringUtils;
 
-public class UsuarioSpecifications {
+public class ExercicioSpecifications {
 
-    public static Specification<Usuario> filterName(String nome) {
+    public static Specification<Exercicio> filterName(String nome) {
 
         return (root, query, cb) -> {
             List<Predicate> predicates = new ArrayList<>();
