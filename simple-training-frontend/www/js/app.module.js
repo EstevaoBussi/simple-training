@@ -16,6 +16,7 @@
       'usuario-module-service',
       'administracao-exercicio-module',
       'exercicio-module-service',
+      'administracao-treino-module',
       'treino-module',
       'treino-module-service',
       'treino-realizado-module-service',
@@ -98,6 +99,15 @@
                   'content@home': {
                       templateUrl: 'views/administracao/exercicio/form.view.html',
                       controller: 'AdministracaoExercicioController'
+                  }
+              }
+          })
+          .state('home.content.admTreino', {
+              url: '/administracao-treino',
+              views: {
+                  'content@home': {
+                      templateUrl: 'views/administracao/treino/form.view.html',
+                      controller: 'AdministracaoTreinoController'
                   }
               }
           })

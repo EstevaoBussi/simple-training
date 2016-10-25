@@ -25,7 +25,6 @@ angular.module('login-module',[])
                         if (response.status == 200 && response.data) {
                             $scope.user = response.data;
                             SessionService.setUser($scope.user);
-                            $state.go('home', {});
                         } else {
                             $scope.error();
                         }

@@ -20,14 +20,11 @@ angular.module('administracao-exercicio-module', [])
         return new Array();
     }
 
-    $scope.$watch('exercicio.image', function() {
-        if ($scope.exercicio.image && !$scope.exercicio.image.type && !$scope.exercicio.image.src) {
-            $scope.exercicio.image.type = 'data:' + $scope.exercicio.image.filetype + ';base64';
-            $scope.exercicio.image.src = $scope.exercicio.image.base64;
-            delete $scope.exercicio.image.filetype;
-            delete $scope.exercicio.image.base64;
-            delete $scope.exercicio.image.filename;
-            delete $scope.exercicio.image.filesize;
+    $scope.$watch('image', function() {
+        if ($scope.image) {
+            $scope.exercicio.image = {};
+            $scope.exercicio.image.type = 'data:' + $scope.image.filetype + ';base64';
+            $scope.exercicio.image.src = $scope.image.base64;
         }
     });
 

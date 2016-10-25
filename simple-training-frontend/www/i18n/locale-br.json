@@ -4,7 +4,8 @@
     "administracao": {
       "label": "Administração",
       "usuario": "Usuário",
-      "exercicio": "Exercício"
+      "exercicio": "Exercício",
+      "treino": "Treino"
     },
     "treino": {
       "ACADEMIA" : "Academia",
@@ -49,6 +50,31 @@
       "ISQUIOTIBIAIS": "Isquiotibiais",
       "PANTURRILHAS": "Panturrilhas",
       "ABDOMINAIS": "Abdominais"
+    },
+    "treino": {
+      "titulo": "Adm. Treino",
+      "empty": "Novo Exercício",
+      "salvar": "Salvar",
+      "limpar": "Limpar",
+      "sucesso": "Treino salvo com sucesso.",
+      "erro": "Erro ao tentar salvar o treino.",
+      "ACADEMIA" : "Academia",
+      "RPG": "RPG",
+      "FUNCIONAL": "Funcional",
+      "categoria": "Categoria",
+      "classificacao": "Calssificação",
+      "dataInicio": "Data Ínicio",
+      "dataFim": "Data Fim",
+      "nomeUsuario": "Nome do Usuário",
+      "emailUsuario": "E-mail do Usuário",
+      "exercicio": {
+        "titulo": "Exercicio",
+        "descricao" : "Descrição do Exercício",
+        "nome": "Exercício",
+        "aparelho": "Aparelho",
+        "duracao": "Duração",
+        "observacao": "Observação"
+      }
     }
   },
   "profile" : {

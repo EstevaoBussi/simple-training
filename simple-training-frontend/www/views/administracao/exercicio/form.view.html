@@ -1,6 +1,11 @@
 <form name="form" class="md-inline-form">
     <md-card layout="column" layout-padding layout-align="start start" class="slider-animate" flex-md="50" flex-gt-md="50" flex-lg="50" flex-gt-lg="50" class="md-inline-form">
-        <h2>{{::'administracao.exercicio.titulo'|translate}} ({{exercicio.id ? exercicio.id : 'Novo'}})</h2>
+        <div layout="row">
+            <div  flex="20" ng-if="exercicio.image">
+                <img style="width: 100%;height: auto;" data-ng-src="{{exercicio.image.type + ',' + exercicio.image.src}}" class="md-card-image" alt="Washed Out" >
+            </div>
+            <h2 flex>{{::'administracao.exercicio.titulo'|translate}} ({{exercicio.id ? exercicio.id : 'Novo'}})</h2>
+        </div>
         <div layout="column" flex style="width: 100%">
             <div layout="row" >
                 <md-autocomplete flex
@@ -52,14 +57,11 @@
                 </div>
             </md-input-container>
             <div layout-gt-xs="row" flex>
-                <div  flex="20" ng-if="exercicio.image">
-                    <img style="width: 100%;height: auto;" data-ng-src="{{exercicio.image.type + ',' + exercicio.image.src}}" class="md-card-image" alt="Washed Out" >
-                </div>
                 <label style="height: 20px !important" class="md-raised md-button md-ink-ripple" for="image" id="imageInput">
                     <md-icon class="material-icons md-toggle-icon" aria-hidden="true">get_app</md-icon>
                     {{::'components.upload'|translate}}
                 </label>
-                <input id="image" name="image" type="file" ng-model="exercicio.image" base-sixty-four-input ng-required="true" ng-hide="true">
+                <input id="image" name="image" type="file" ng-model="image" base-sixty-four-input ng-required="true" ng-hide="true">
             </div>
         </div>
     </md-card>

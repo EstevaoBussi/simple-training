@@ -13,7 +13,7 @@ angular
             },
             link: function (scope, element, attrs) {
                 scope.name = function() {
-                    return !scope.options || !scope.options.user ? '' : (scope.options.user.name && scope.options.user.name.length > 22 ? scope.options.user.name.substring(0, 22) : scope.options.user.name);
+                    return !scope.options || !scope.options.user ? '' : (scope.options.user.name && scope.options.user.name.length > 20 ? scope.options.user.name.substring(0, 20) : scope.options.user.name);
                 }
 
             }
