@@ -15,5 +15,17 @@ angular.module('treino-module-service', [])
             });
         }
 
+        module.inserir = function(treino) {
+            return transactionExecutor('Inserindo Treino', function () {
+                return $http.post(constant.apiBaseURL.concat('treinos'), treino, constant.header(SessionService.getToken()));
+            });
+        };
+
+        module.alterar = function(usuario) {
+            return transactionExecutor('Alterando Treino', function () {
+                return $http.put(constant.apiBaseURL.concat('treino'), treino, constant.header(SessionService.getToken()));
+            });
+        };
+
         return module;
     }]);

@@ -1,13 +1,13 @@
 <div style="width:100%">
     <sidemenu options="sidemenu.options" items="sidemenu.items"></sidemenu>
-
     <div flex layout="column" tabIndex="-1" role="main" class="md-primary">
         <md-toolbar layout="column" md-whiteframe="1" class="md-primery">
             <div flex layout="row">
                 <div layout="row" layout-align="start center" flex class="marg-l-10">
-                    <md-button hide-gt-md id="main" class="md-fab md-mini md-primary md-hue-2" ng-click="toggleOpen()" aria-label="Show User List" style="min-width: 30px;">
+                    <md-button hide-gt-md id="main" class="md-fab md-mini md-primary md-hue-2" ng-click="toggleOpen()" aria-label="Show User List" style="min-width: 40px;">
                         <md-icon class="txt-blue material-icons md-toggle-icon" aria-hidden="true">menu</md-icon>
                     </md-button>
+                    <h3 class="marg-l-20" ng-if="!floatingButton">{{::titlePage|translate}}</h3>
                 </div>
                 <div layout="row" layout-align="end center" flex="70" class="marg-r-10">
                     <profile options="header.profile" layout-align="end center"></profile>
@@ -18,7 +18,7 @@
                      <h3>{{::titlePage|translate}}</h3>
                 </div>
                 <section layout="row" layout-sm="column" layout-align="end center" layout-wrap class="floating-button" ng-if="floatingButton">
-                    <md-button class="md-fab md-primary md-whiteframe-10dp" ng-click="floatingButton()">
+                    <md-button class="md-fab md-primary md-hue-2 md-whiteframe-10dp" ng-click="floatingButton()">
                         <md-icon>add</md-icon>
                     </md-button>
                 </section>

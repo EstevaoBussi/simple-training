@@ -595,7 +595,7 @@ md-sidenav md-content {
 }
 
 .slider-animate.ng-enter, .slider-animate.ng-leave {
-    transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.7s;
+    transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.4s;
     width:100%;
     top:0;
     left:0;

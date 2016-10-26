@@ -93,7 +93,7 @@ angular.module('administracao-treino-module', [])
                     }
                 });
             } else {
-                ExercicioService.inserir(treino).then(function(response){
+                TreinoService.inserir(treino).then(function(response){
                     if(response.status == 200){
                         $scope.treino = {};
                         toast.alert({message:'administracao.treino.sucesso'});
