@@ -1,0 +1,82 @@
+<md-dialog aria-label="Cadastro Exercício" flex style="max-width: 700px;">
+    <form name="form" ng-cloak flex>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2 style="color:#FFFFFF;">{{::'administracao.treino.exercicio.titulo'|translate}}</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="callbacks.cancel()" >
+                    <md-icon style="color:#FFFFFF;">clear</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content flex >
+            <div layout="column" flex layout-padding="20">
+                <div layout="row" >
+                    <md-autocomplete flex
+                                     ng-required="true"
+                                     md-input-name="autocompleteexercicio"
+                                     md-input-minlength="3"
+                                     md-input-maxlength="40"
+                                     md-selected-item="callbacks.selectedItemExercicio"
+                                     md-search-text-change="callbacks.searchTextChangeExercicio(model.exercicio.exercicio.nome)"
+                                     md-search-text="model.exercicio.exercicio.nome"
+                                     md-selected-item-change="callbacks.selectedItemChangeExercicio(model.exercicio, item)"
+                                     md-items="item in callbacks.querySearchExercicio(model.exercicio.exercicio.nome)"
+                                     md-item-text="item.nome"
+                                     md-floating-label="{{::'administracao.treino.exercicio.nome'|translate}}">
+                        <md-item-template>
+                            <span md-highlight-text="model.exercicio.exercicio.nome" md-highlight-flags="^i">{{item.nome}}</span>
+                        </md-item-template>
+                        <md-not-found>
+                            {{::'administracao.treino.empty'|translate}}
+                        </md-not-found>
+                        <div ng-messages="form.autocompleteexercicio.$error" role="alert" multiple ng-if="form.autocompleteexercicio.$touched">
+                            <div ng-message="required" >{{::'messages.required'|translate}}</div>
+                        </div>
+                    </md-autocomplete>
+                    <md-input-container flex>
+                        <label>{{::'administracao.treino.exercicio.descricao'|translate}}</label>
+                        <input ng-model="model.exercicio.exercicio.descricao" type="text" name="descricao" ng-disabled="true">
+                    </md-input-container>
+                </div>
+                <div layout="row" flex>
+                    <md-input-container flex>
+                        <label>{{::'administracao.treino.exercicio.duracao'|translate}}</label>
+                        <input ng-model="model.exercicio.duracao" type="text" required="true" name="duracao">
+                        <div ng-messages="form.duracao.$error" role="alert" multiple>
+                            <div ng-message="required" >{{::'messages.required'|translate}}</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container flex>
+                        <label>{{::'administracao.treino.exercicio.observacao'|translate}}</label>
+                        <input ng-model="model.exercicio.observacao" type="text" required="true" name="observacao">
+                        <div ng-messages="form.observacao.$error" role="alert" multiple>
+                            <div ng-message="required" >{{::'messages.required'|translate}}</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div layout="row" >
+                    <md-input-container flex="50">
+                        <label>{{::'administracao.treino.exercicio.aparelho'|translate}}</label>
+                        <input ng-model="model.exercicio.aparelho" type="text" required="true" name="aparelho">
+                        <div ng-messages="form.aparelho.$error" role="alert" multiple>
+                            <div ng-message="required" >{{::'messages.required'|translate}}</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button ng-click="callbacks.cancel()" class="md-warn">
+                {{::'administracao.treino.exercicio.cancelar'|translate}}
+            </md-button>
+            <md-button ng-click="callbacks.remover(model.indice)" class="md-warn" ng-if="model.indice != undefined">
+                {{::'administracao.treino.exercicio.remover'|translate}}
+            </md-button>
+            <md-button ng-click="form.$valid ? callbacks.confirm(model.indice, model.exercicio) : null" ng-disabled="form.$invalid" class="md-primary">
+                {{::'administracao.treino.exercicio.adicionar'|translate}}
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

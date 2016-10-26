@@ -55,7 +55,7 @@
             'A200': '#CFD8DC',
             'A400': '#455A64',
             'A700': '#FFFFFF',
-            'contrastDefaultColor': 'light',
+            'contrastDefaultColor': 'dark',
             'contrastDarkColors': '50 100 200 300 400 500 A100 A200 A400'
         });
 

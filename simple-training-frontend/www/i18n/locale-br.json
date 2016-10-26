@@ -17,7 +17,7 @@
   },
   "administracao": {
     "usuario": {
-      "titulo": "Adm. Usuário",
+      "titulo": "Adminitração Usuário",
       "username": "Username",
       "nome": "Nome",
       "dataNascimento": "Data Nascimento",
@@ -31,7 +31,7 @@
       "erro":"Erro ao tentar salvar o usuário."
     },
     "exercicio": {
-      "titulo": "Adm. Exercicio",
+      "titulo": "Administração Exercicio",
       "nome": "Nome",
       "descricao": "Descrição",
       "grupoMuscular": "Grupo Muscular",
@@ -52,7 +52,7 @@
       "ABDOMINAIS": "Abdominais"
     },
     "treino": {
-      "titulo": "Adm. Treino",
+      "titulo": "Administração Treino",
       "empty": "Novo Exercício",
       "salvar": "Salvar",
       "limpar": "Limpar",
@@ -73,7 +73,10 @@
         "nome": "Exercício",
         "aparelho": "Aparelho",
         "duracao": "Duração",
-        "observacao": "Observação"
+        "observacao": "Observação",
+        "cancelar": "Cancelar",
+        "adicionar": "Adicionar",
+        "remover": "Remover"
       }
     }
   },

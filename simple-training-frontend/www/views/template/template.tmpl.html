@@ -2,16 +2,26 @@
     <sidemenu options="sidemenu.options" items="sidemenu.items"></sidemenu>
 
     <div flex layout="column" tabIndex="-1" role="main" class="md-primary">
-        <md-toolbar layout="row" md-whiteframe="1" class="md-primery">
+        <md-toolbar layout="column" md-whiteframe="1" class="md-primery">
             <div flex layout="row">
-                <div layout="row" layout-align="start center" flex>
+                <div layout="row" layout-align="start center" flex class="marg-l-10">
                     <md-button hide-gt-md id="main" class="md-fab md-mini md-primary md-hue-2" ng-click="toggleOpen()" aria-label="Show User List" style="min-width: 30px;">
                         <md-icon class="txt-blue material-icons md-toggle-icon" aria-hidden="true">menu</md-icon>
                     </md-button>
                 </div>
-                <div layout="row" layout-align="end center" flex="70">
+                <div layout="row" layout-align="end center" flex="70" class="marg-r-10">
                     <profile options="header.profile" layout-align="end center"></profile>
                 </div>
+            </div>
+            <div flex layout="row" ng-if="titlePage">
+                <div layout="row" layout-align="start center" flex class="title-page marg-l-80">
+                     <h3>{{::titlePage|translate}}</h3>
+                </div>
+                <section layout="row" layout-sm="column" layout-align="end center" layout-wrap class="floating-button" ng-if="floatingButton">
+                    <md-button class="md-fab md-primary md-whiteframe-10dp" ng-click="floatingButton()">
+                        <md-icon>add</md-icon>
+                    </md-button>
+                </section>
             </div>
         </md-toolbar>
         <md-content flex id="content" >

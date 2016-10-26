@@ -42,7 +42,7 @@
     }).config(['$stateProvider', '$urlRouterProvider', '$logProvider',
       function($stateProvider, $urlRouterProvider) {
 
-        $urlRouterProvider.otherwise("/login");
+        $urlRouterProvider.otherwise("/");
 
         $stateProvider
           .state('login', {

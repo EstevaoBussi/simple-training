@@ -30,18 +30,24 @@
                     });
             };
 
-            function DialogController($scope, $mdDialog, actions) {
-                $scope.confirm = actions.confirm;
-                $scope.cancel = actions.cancel;
+            function DialogController($scope, $mdDialog, callbacks, model) {
+                $scope.callbacks = callbacks;
+                $scope.model = model;
             }
 
-            service.pronpt = function(template, actions) {
-                var parentEl = angular.element(document.body);
+            service.pronpt = function(template, callbacks, model, element) {
+                var parentEl;
+                if (!element) {
+                    parentEl = element;
+                } else {
+                    parentEl = angular.element(document.body);
+                }
+
                 $mdDialog.show({
                     parent: parentEl,
                     templateUrl: template,
                     controller: DialogController,
-                    locals: {actions:actions}
+                    locals: {callbacks:callbacks,model:model}
                 });
             }
 

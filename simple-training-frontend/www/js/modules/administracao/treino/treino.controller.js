@@ -1,85 +1,107 @@
 angular.module('administracao-treino-module', [])
-.controller('AdministracaoTreinoController', ['$scope', '$stateParams', 'TreinoService', 'UsuarioService', 'ExercicioService', 'dialog', '$mdDialog', 'toast', '$q',
-                        function ($scope, $stateParams, TreinoService, UsuarioService, ExercicioService, dialog, $mdDialog, toast, $q) {
+.controller('AdministracaoTreinoController', ['$rootScope', '$scope', '$stateParams', 'TreinoService', 'UsuarioService', 'ExercicioService', 'dialog', '$mdDialog', 'toast', '$q',
+    function ($rootScope, $scope, $stateParams, TreinoService, UsuarioService, ExercicioService, dialog, $mdDialog, toast, $q) {
 
-    $scope.treino = {usuario:{}};
-    $scope.alteracao = false;
-    $scope.exercicio = {};
+        $rootScope.titlePage = 'administracao.treino.titulo';
+        $scope.treino = {usuario:{}, exercicios:new Array()};
+        $scope.alteracao = false;
 
-    TreinoService.getCategorias().then(function(response){
-        if (response.status == 200 && response.data) {
-            angular.forEach(response.data, function (value, key) {
-                $scope.categorias = response.data;
-            });
+        $scope.querySearch = function(query) {
+            if (query && query.length > 2) {
+                var deferred = $q.defer();
+                UsuarioService.findUsuario(query).then(function (response) {
+                    if (response.status == 200 && response.data) {
+                        deferred.resolve(response.data);
+                    } else {
+                        deferred.reject(response.data);
+                    }
+                });
+                return deferred.promise;
+            }
+            return new Array();
         }
-    });
+        $scope.selectedItemChange = function(item) {
+            if (item) {
+                $scope.treino.usuario = item;
+            } else {
+                $scope.treino.usuario = {};
+            }
+        }
 
-    $scope.querySearch = function(query) {
-        if (query && query.length > 2) {
-            var deferred = $q.defer();
-            UsuarioService.findUsuario(query).then(function (response) {
-                if (response.status == 200 && response.data) {
-                    deferred.resolve(response.data);
-                } else {
-                    deferred.reject(response.data);
+        TreinoService.getCategorias().then(function(response){
+            if (response.status == 200 && response.data) {
+                angular.forEach(response.data, function (value, key) {
+                    $scope.categorias = response.data;
+                });
+            }
+        });
+
+        $scope.adicionarExercicio = function(indice, exercicio) {
+            var model = {indice:indice};
+            model.exercicio = exercicio ? exercicio : {exercicio:{exercicio:{}}};
+            var actions = {
+                confirm: function(indice, exercicio){
+                    if (indice) {
+                        $scope.treino.exercicios[indice] = exercicio;
+                    } else {
+                        $scope.treino.exercicios.push(exercicio);
+                    }
+                    $mdDialog.hide();
+                },
+                cancel: function(){
+                    $mdDialog.hide();
+                },
+                remover: function(indice){
+                    $scope.treino.exercicios.splice(indice, 1);
+                    $mdDialog.hide();
+                },
+                querySearchExercicio: function(query) {
+                    if (query && query.length > 2) {
+                        var deferred = $q.defer();
+                        ExercicioService.findExercicio(query).then(function (response) {
+                            if (response.status == 200 && response.data) {
+                                deferred.resolve(response.data);
+                            } else {
+                                deferred.reject(response.data);
+                            }
+                        });
+                        return deferred.promise;
+                    }
+                    return new Array();
+                },
+                selectedItemChangeExercicio: function(exercicio, item) {
+                    if (item) {
+                        exercicio.exercicio = item;
+                    } else {
+                        exercicio.exercicio = {};
+                    }
                 }
-            });
-            return deferred.promise;
+            }
+            dialog.pronpt('/views/administracao/treino/pronpt-exercicio.tmpl.html', actions, model);
         }
-        return new Array();
-    }
 
-    $scope.selectedItemChange = function(item) {
-        if (item) {
-            $scope.treino.usuario = item;
-        } else {
-            $scope.treino.usuario = {};
+        $rootScope.floatingButton = $scope.adicionarExercicio;
+
+        $scope.salvar = function(treino) {
+            if($scope.alteracao) {
+                TreinoService.alterar(treino).then(function(response){
+                    if(response.status == 200){
+                        $scope.treino = {};
+                        toast.alert({message:'administracao.treino.sucesso'});
+                    } else {
+                        toast.alert({message:'administracao.treino.erro'});
+                    }
+                });
+            } else {
+                ExercicioService.inserir(treino).then(function(response){
+                    if(response.status == 200){
+                        $scope.treino = {};
+                        toast.alert({message:'administracao.treino.sucesso'});
+                    } else {
+                        toast.alert({message:'administracao.treino.erro'});
+                    }
+                });
+            }
         }
-    }
 
-    $scope.querySearchExercicio = function(query) {
-        if (query && query.length > 2) {
-            var deferred = $q.defer();
-            ExercicioService.findExercicio(query).then(function (response) {
-                if (response.status == 200 && response.data) {
-                    deferred.resolve(response.data);
-                } else {
-                    deferred.reject(response.data);
-                }
-            });
-            return deferred.promise;
-        }
-        return new Array();
-    }
-
-    $scope.selectedItemChangeExercicio = function(item) {
-        if (item) {
-            $scope.exercicio = item;
-        } else {
-            $scope.exercicio = {};
-        }
-    }
-
-    $scope.salvar = function(treino) {
-        if($scope.alteracao) {
-            TreinoService.alterar(treino).then(function(response){
-                if(response.status == 200){
-                    $scope.treino = {};
-                    toast.alert({message:'administracao.treino.sucesso'});
-                } else {
-                    toast.alert({message:'administracao.treino.erro'});
-                }
-            });
-        } else {
-            ExercicioService.inserir(treino).then(function(response){
-                if(response.status == 200){
-                    $scope.treino = {};
-                    toast.alert({message:'administracao.treino.sucesso'});
-                } else {
-                    toast.alert({message:'administracao.treino.erro'});
-                }
-            });
-        }
-    }
-
-}]);
+    }]);

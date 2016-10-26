@@ -13,6 +13,17 @@ body {
     font-size: 1.3rem;
     color: rgba(0, 0, 0, 0.87);
 }
+.md-fab>md-icon {
+    color: #FFFFFF !important;
+}
+.floating-button {
+    position: absolute;
+    right: 20px;
+    top:95px;
+}
+md-toolbar {
+    color:#FFFFFF;
+}
 /*
  * Fonte 14px para device: https://material.google.com/style/typography.html
  */
@@ -150,6 +161,10 @@ md-sidenav md-content {
 }
 
 /* Fim SIDEMENU */
+
+.title-page {
+    color: #FFFFFF;
+}
 
 .header-logo {
     width: 160px;
