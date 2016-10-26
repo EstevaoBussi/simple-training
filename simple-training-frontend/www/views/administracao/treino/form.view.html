@@ -1,8 +1,24 @@
 <form name="form" class="md-inline-form">
     <div layout="row">
-        <div layout="column" class="slider-animate" flex-md="50" flex-gt-md="50" flex-lg="50" flex-gt-lg="50" class="md-inline-form">
+        <div layout="column" class="slider-animate" flex-sm="100" flex-gt-sm="100" flex-md="70" flex-gt-md="60" flex-lg="60" flex-gt-lg="50" class="md-inline-form">
             <md-card layout="column" layout-padding layout-align="start start" >
                 <div layout="column" flex style="width: 100%">
+                    <div layout="row" >
+                        <md-input-container >
+                            <label>{{::'administracao.treino.dataInicio'|translate}}</label>
+                            <md-datepicker ng-model="treino.dataInicio" date-converter name="dataInicio" ng-required="true" ></md-datepicker>
+                            <div ng-messages="form['dataInicio'].$error">
+                                <div ng-message="required">{{::'messages.required'|translate}}</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container >
+                            <label>{{::'administracao.treino.dataFim'|translate}}</label>
+                            <md-datepicker ng-model="treino.dataFim" date-converter name="dataFim" ng-required="true" ></md-datepicker>
+                            <div ng-messages="form['dataFim'].$error">
+                                <div ng-message="required">{{::'messages.required'|translate}}</div>
+                            </div>
+                        </md-input-container>
+                    </div>
                     <div layout="row" >
                         <md-input-container flex>
                             <label>{{::'administracao.treino.classificacao'|translate}}</label>
@@ -19,22 +35,6 @@
                             </md-select>
                             <div ng-messages="form.categoria.$error" role="alert" multiple>
                                 <div ng-message="required" >{{::'messages.required'|translate}}</div>
-                            </div>
-                        </md-input-container>
-                    </div>
-                    <div layout="row" >
-                        <md-input-container flex>
-                            <label>{{::'administracao.treino.dataInicio'|translate}}</label>
-                            <md-datepicker ng-model="treino.dataInicio" date-converter name="dataInicio" ng-required="true" ></md-datepicker>
-                            <div ng-messages="form['dataInicio'].$error">
-                                <div ng-message="required">{{::'messages.required'|translate}}</div>
-                            </div>
-                        </md-input-container>
-                        <md-input-container flex>
-                            <label>{{::'administracao.treino.dataFim'|translate}}</label>
-                            <md-datepicker ng-model="treino.dataFim" date-converter name="dataFim" ng-required="true" ></md-datepicker>
-                            <div ng-messages="form['dataFim'].$error">
-                                <div ng-message="required">{{::'messages.required'|translate}}</div>
                             </div>
                         </md-input-container>
                     </div>
