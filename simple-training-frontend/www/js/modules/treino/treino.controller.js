@@ -1,6 +1,6 @@
 angular.module('treino-module', [])
 .controller('TreinoController', ['$scope', '$stateParams', 'TreinoService', 'TreinoRealizadoService', 'dialog', '$mdDialog', 'toast',
-                        function ($scope, $stateParams, TreinoService, TreinoRealizadoService, dialog, $mdDialog, toast) {
+function ($scope, $stateParams, TreinoService, TreinoRealizadoService, dialog, $mdDialog, toast) {
     $scope.tipo = $stateParams.tipo;
     $scope.filter = false;
     $scope.filterShow = function(){
@@ -9,7 +9,17 @@ angular.module('treino-module', [])
     $scope.filtro = {};
     $scope.filtro.dataTreino = new Date();
 
-    $scope.$watch('filtro', function(newValue, oldValue) {
+    $scope.$watch('filtro.realizado', function(newValue, oldValue) {
+        if($scope.filtro.dataTreino) {
+            if (!$scope.filtro.realizado) {
+                treinosDisponiveis($scope.dateTreino, $scope.tipo, $scope, TreinoService, toast);
+            } else {
+                treinosExecutados($scope.dataTreino, $scope.tipo, $scope, TreinoRealizadoService, toast);
+            }
+        }
+    });
+
+    $scope.$watch('filtro.dataTreino', function(newValue, oldValue) {
         if($scope.filtro.dataTreino) {
             if (!$scope.filtro.realizado) {
                 treinosDisponiveis($scope.dateTreino, $scope.tipo, $scope, TreinoService, toast);
@@ -21,13 +31,14 @@ angular.module('treino-module', [])
 
     $scope.finalizarTreino = function(treino) {
         var template = '/views/treino/pronpt-date.tmpl.html';
+        var model = new Date();
         var actions = {
             confirm: function(data){
                 var treinoRealizado = {treino:treino,data:moment(data).format('YYYY-MM-DD')};
                 TreinoRealizadoService.inserir(treinoRealizado).then(function(response){
                     if (response.data) {
                         treinosExecutados($scope.dataTreino, $scope.tipo, $scope, TreinoRealizadoService);
-                        $scope.realizado = true;
+                        $scope.filtro.realizado = true;
                     }
                 },function(response){
                     toast.alert({message:'treino.buscaError'});
@@ -37,7 +48,7 @@ angular.module('treino-module', [])
                 $mdDialog.hide();
             }
         }
-        dialog.pronpt(template, actions);
+        dialog.pronpt(template, actions, model);
     }
 }]);
 

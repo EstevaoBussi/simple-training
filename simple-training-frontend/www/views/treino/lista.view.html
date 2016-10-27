@@ -1,7 +1,9 @@
 <div layout-padding layout-align="center center" fill-height >
     <div ng-show="filter" class="filter-options" md-whiteframe="5" >
         <form name="form">
-            <div layout-padding style="padding:10px 0 0 18px"><md-checkbox ng-model="filtro.realizado" aria-label="{{::treino.realizado|translate}}" class="md-primary"><span>{{::'treino.realizado'|translate}}</span></md-checkbox></div>
+            <div layout-padding style="padding:10px 0 0 18px">
+                <md-checkbox ng-model="filtro.realizado" aria-label="{{::treino.realizado|translate}}" class="md-primary"><span>{{::'treino.realizado'|translate}}</span></md-checkbox>
+            </div>
             <md-input-container>
                 <label>{{::'treino.dataTreino'|translate}}</label>
                 <md-datepicker ng-model="filtro.dataTreino" name="dateField" id="dateField" ng-required="true" aria-label="dd/MM/yyyy"></md-datepicker>
@@ -11,8 +13,8 @@
             </md-input-container>
         </form>
     </div>
-    <div ng-if="!realizado" ng-include="'/views/treino/disponivel.view.html'"></div>
-    <div ng-if="realizado" ng-include="'/views/treino/realizado.view.html'"></div>
+    <div ng-if="!filtro.realizado" ng-include="'/views/treino/disponivel.view.html'"></div>
+    <div ng-if="filtro.realizado" ng-include="'/views/treino/realizado.view.html'"></div>
     <div class="button-filter">
         <md-button class="md-fab md-primary md-hue-2" aria-label="Eat cake" ng-click="filter = !filter">
             <md-icon><i class="material-icons">filter_list</i></md-icon>

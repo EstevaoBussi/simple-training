@@ -6,25 +6,7 @@
                     <span class="md-headline"><img style="width: 100%;height: auto;" data-ng-src="{{exercicio.exercicio.image.type + ',' + exercicio.exercicio.image.src}}" class="md-card-image" alt="Washed Out" ></span>
                 </md-card-title-text>
             </md-card-title>
-            <md-card-content layout="row" layout-padding layout-align="space-between" flex>
-                <div layout="column" layout-align="center start" hide-xs flex="45">
-                    <span class="line-h-22" title="Exercicio"><b>Exerc:</b> {{exercicio.exercicio.nome}}</span>
-                    <span class="line-h-22" title="Descrição"><b>Desc:</b> {{exercicio.exercicio.descricao}}</span>
-                    <span class="line-h-22" title="Tempo"><b>Temp:</b> {{exercicio.duracao}}</span>
-                </div>
-                <div layout="column" layout-align="center start" hide-xs flex="40">
-                    <span class="line-h-22" title="Aparelho"><b md-tooltip="Aparelho">Apar:</b> {{exercicio.aparelho}}</span>
-                    <span class="line-h-22" title="Alternativa"><b>Alter:</b> {{exercicio.alternativa}}</span>
-                    <span class="line-h-22" title="Observação"><b>Obs:</b> {{exercicio.observacao}}</span>
-                </div>
-                <div layout="column" layout-align="center start" hide-gt-xs>
-                    <span class="line-h-22" title="Exercicio"><b>Exerc:</b> {{exercicio.exercicio.nome}}</span>
-                    <span class="line-h-22" title="Descrição"><b>Desc:</b> {{exercicio.exercicio.descricao}}</span>
-                    <span class="line-h-22" title="Tempo"><b>Repet:</b> {{exercicio.duracao}}</span>
-                    <span class="line-h-22" title="Aparelho"><b md-tooltip="Aparelho">Apar:</b> {{exercicio.aparelho}}</span>
-                    <span class="line-h-22" title="Observação"><b>Obs:</b> {{exercicio.observacao}}</span>
-                </div>
-            </md-card-content>
+            <div ng-include="'/views/treino/exercicio-detail.tmpl.html'" flex></div>
         </md-card>
         <div layout="row" layout-align="end center" layout-padding flex-sm="100" flex-gt-sm="100" flex-md="70" flex-gt-md="60" flex-lg="60" flex-gt-lg="50">
             <md-button class="md-primary" ng-click="finalizarTreino(treino)" >{{::'treino.executado'|translate}}</md-button>
