@@ -1,5 +1,5 @@
 <md-tabs md-dynamic-height md-border-bottom ng-if="treinosRealizados" class="slider-animate">
-    <md-tab label="{{::'treino.treino'|translate}} - {{::treino.treino.classificacao}} - {{::treino.data|date:'dd/MM/yy'}}" ng-repeat="treino in treinosRealizados" ng-disabled="!treino.treino.exercicios || treino.treino.exercicios.length <= 0">
+    <md-tab label="{{::treino.treino.classificacao}} - {{::treino.data|date:'dd/MM/yy'}}" ng-repeat="treino in treinosRealizados" ng-disabled="!treino.treino.exercicios || treino.treino.exercicios.length <= 0">
         <md-card ng-repeat="exercicio in treino.treino.exercicios" layout="row" flex-sm="100" flex-gt-sm="100" flex-md="70" flex-gt-md="60" flex-lg="60" flex-gt-lg="50">
             <md-card-title flex="15" flex-xs="25">
                 <md-card-title-text layout-align="center center" style="max-width: 150px;min-width: 60px">
