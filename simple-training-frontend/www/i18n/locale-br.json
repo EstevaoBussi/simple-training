@@ -26,6 +26,7 @@
       "empty": "Novo usuário",
       "ADMINISTRADOR":"Administrador",
       "USUARIO": "Usuário Comum",
+      "limpar": "Limpar",
       "salvar": "Salvar",
       "sucesso":"Usuário salvo com sucesso.",
       "erro":"Erro ao tentar salvar o usuário."

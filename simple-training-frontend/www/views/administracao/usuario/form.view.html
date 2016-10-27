@@ -53,6 +53,7 @@
         </div>
     </md-card>
     <div layout="row" layout-align="end center" class="slider-animate" flex-md="50" flex-gt-md="50" flex-lg="50" flex-gt-lg="50">
+        <md-button class="md-warn" ng-click="usuario = {}" >{{::'administracao.usuario.limpar'|translate}}</md-button>
         <md-button class="md-primary" ng-disabled="form.$invalid" ng-click="form.$valid ? salvar(usuario) : null" >{{::'administracao.usuario.salvar'|translate}}</md-button>
     </div>
 </form>

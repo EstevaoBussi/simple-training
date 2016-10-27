@@ -7,6 +7,11 @@ angular.module('template-module', [])
     $scope.items2 = [];
     $scope.user = SessionService.getUser();
 
+    if (!$scope.user) {
+        $state.go('login', {});
+        return;
+    }
+
     $scope.sidemenu.items = $scope.items2;
     $scope.sidemenu.options = {id:'sidemenu'};
 
