@@ -16,6 +16,7 @@
     "angular-i18n": "1.5.7",
     "moment": "2.10.6",
     "angular-ui-router": "~0.2.13",
+    "ngCordova":"0.1.26-alpha",
     "angular-material-icons": "~v0.6.0"
   },
   "devDependencies": {},

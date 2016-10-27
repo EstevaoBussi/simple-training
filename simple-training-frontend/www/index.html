@@ -67,12 +67,10 @@
         </script>
         <div class="fill-height" ui-view ng-hide="!user"></div>
         <md-content layout="column" layout-align="center center" style="width: 90%;" class="fill-height md-padding" ng-hide="user">
-            <md-card class="login" layout-align="center center" >
+            <md-card class="login" layout-align="end center" >
                 <md-card-content>
                     <div class="row">
-                        <div style="display: table;margin: 0 auto;" class="col s12">
-                            <div data-onsuccess="onSignIn" class="g-signin2"></div>
-                        </div>
+                        <div data-onsuccess="onSignIn" class="g-signin2"></div>
                     </div>
                 </md-card-content>
             </md-card>
