@@ -3,7 +3,11 @@ angular.module('administracao-treino-module', [])
     function ($rootScope, $scope, $stateParams, TreinoService, UsuarioService, ExercicioService, dialog, $mdDialog, toast, $q) {
 
         $rootScope.titlePage = 'administracao.treino.titulo';
-        $scope.treino = {usuario:{}, exercicios:new Array()};
+        $scope.novoTreino = function() {
+            $scope.treino = {usuario:{}, exercicios:new Array()};
+        }
+
+        $scope.novoTreino();
         $scope.alteracao = false;
 
         $scope.querySearch = function(query) {
@@ -86,7 +90,7 @@ angular.module('administracao-treino-module', [])
             if($scope.alteracao) {
                 TreinoService.alterar(treino).then(function(response){
                     if(response.status == 200){
-                        $scope.treino = {};
+                        $scope.novoTreino();
                         toast.alert({message:'administracao.treino.sucesso'});
                     } else {
                         toast.alert({message:'administracao.treino.erro'});
@@ -95,7 +99,7 @@ angular.module('administracao-treino-module', [])
             } else {
                 TreinoService.inserir(treino).then(function(response){
                     if(response.status == 200){
-                        $scope.treino = {};
+                        $scope.novoTreino();
                         toast.alert({message:'administracao.treino.sucesso'});
                     } else {
                         toast.alert({message:'administracao.treino.erro'});

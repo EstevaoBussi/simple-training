@@ -74,7 +74,7 @@
                 </div>
             </md-card>
             <div layout="row" layout-align="end center" >
-                <md-button class="md-warn" ng-click="treino = {}" >{{::'administracao.treino.limpar'|translate}}</md-button>
+                <md-button class="md-warn" ng-click="novoTreino();" >{{::'administracao.treino.limpar'|translate}}</md-button>
                 <md-button class="md-primary" ng-disabled="form.$invalid" ng-click="form.$valid ? salvar(treino) : null" >{{::'administracao.treino.salvar'|translate}}</md-button>
             </div>
         </div>
