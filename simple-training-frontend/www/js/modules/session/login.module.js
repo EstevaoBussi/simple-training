@@ -16,7 +16,6 @@ angular.module('login-module',[])
             }
 
             $scope.signIn = function (googleUser) {
-                $scope.user = true;
                 var profile = googleUser.getBasicProfile();
                 var auth = googleUser.getAuthResponse();
                 var token = auth.id_token;

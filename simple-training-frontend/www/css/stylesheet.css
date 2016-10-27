@@ -36,7 +36,6 @@ p {
     margin: 0 0 .5em;
 }
 a {
-    color: #0277bb;
     text-decoration: none;
     -webkit-transition: color 0.1s linear;
     -moz-transition: color 0.1s linear;

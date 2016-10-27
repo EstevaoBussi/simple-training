@@ -1,16 +1,15 @@
 angular.module('template-module', [])
 .controller('TemplateController', ['$scope', '$mdSidenav', 'SessionService', '$state', 'TreinoService', 'SessionService',
-                          function ($scope, $mdSidenav, SessionService, $state, TreinoService, SessionService) {
+function ($scope, $mdSidenav, SessionService, $state, TreinoService, SessionService) {
 
+    if (!SessionService.getUser()) {
+        $state.go('login', {});
+        return;
+    }
     $scope.sidemenu = {};
     $scope.header = {};
     $scope.items2 = [];
     $scope.user = SessionService.getUser();
-
-    if (!$scope.user) {
-        $state.go('login', {});
-        return;
-    }
 
     $scope.sidemenu.items = $scope.items2;
     $scope.sidemenu.options = {id:'sidemenu'};

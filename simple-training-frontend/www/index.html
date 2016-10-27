@@ -65,8 +65,7 @@
                 angular.element(document.body).scope().signOut(gapi);
             }
         </script>
-        <div class="fill-height" ui-view ng-hide="!user"></div>
-        <md-content layout="column" layout-align="center center" style="width: 90%;" class="fill-height md-padding" ng-hide="user">
+        <md-content layout="column" layout-align="center center" style="width: 90%;" class="fill-height md-padding" ng-show="!user">
             <md-card class="login" layout-align="end center" >
                 <md-card-content>
                     <div class="row">
@@ -75,6 +74,7 @@
                 </md-card-content>
             </md-card>
         </md-content>
+        <div class="fill-height" ui-view ng-hide="!user"></div>
     </body>
 
 </html>
